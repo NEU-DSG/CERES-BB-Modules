@@ -21,6 +21,6 @@ add_action( 'init', 'ceres_load_bb_simple' );
 
 function ceres_load_bb_simple() {
     if ( class_exists( 'FLBuilder' ) ) {
-        require_once 'CeresBbModules/CeresBbSimpleModule.php';
+        require_once 'CeresBbModules/ceres_simple/CeresBbSimpleModule.php';
     }
 }

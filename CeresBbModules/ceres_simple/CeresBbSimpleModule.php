@@ -23,7 +23,7 @@ class Simple extends FLBuilderModule {
         ));
     }
 
-    public function dafuq() {
+    public function test() {
         return "WHEEEE!";
     }
 }
