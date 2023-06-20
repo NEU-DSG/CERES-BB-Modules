@@ -22,5 +22,12 @@ add_action( 'init', 'ceres_load_bb_simple' );
 function ceres_load_bb_simple() {
     if ( class_exists( 'FLBuilder' ) ) {
         require_once 'CeresBbModules/ceres_simple/CeresBbSimpleModule.php';
+        require_once 'CeresBbModules/ceres_boosted/CeresBbBoostedModule.php';
     }
+
 }
+
+
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);

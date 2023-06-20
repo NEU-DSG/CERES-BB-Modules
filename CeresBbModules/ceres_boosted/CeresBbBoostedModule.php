@@ -5,17 +5,17 @@ namespace Ceres\BeaverBuilder\Module;
 use FLBuilderModule;
 use FLBuilder;
 
-class Simple extends FLBuilderModule {
+class Boosted extends FLBuilderModule {
 
     public function __construct()
     {
         parent::__construct(array(
-            'name'            => __( 'CERES Simple BB module', 'fl-builder' ),
+            'name'            => __( 'CERES Boosted BB module', 'fl-builder' ),
             'description'     => __( 'Just Testing', 'fl-builder' ),
-            'group'           => __( 'CERES Classic', 'fl-builder' ),
+            'group'           => __( 'CERES Boosted', 'fl-builder' ),
             'category'        => __( 'CERES', 'fl-builder' ),
-            'dir'             => CERES_BB_MODULES_DIR . 'CeresBbModules/ceres_simple',
-            'url'             => CERES_BB_MODULES_URL . 'CeresBbModules/ceres_simple',
+            'dir'             => CERES_BB_MODULES_DIR . 'CeresBbModules/ceres_boosted',
+            'url'             => CERES_BB_MODULES_URL . 'CeresBbModules/ceres_boosted',
             'icon'            => 'button.svg',
             'editor_export'   => true, // Defaults to true and can be omitted.
             'enabled'         => true, // Defaults to true and can be omitted.
@@ -24,12 +24,12 @@ class Simple extends FLBuilderModule {
     }
 
     public function test() {
-        return "simple test";
+        return "WHEEEE!";
     }
 }
 
 //use expanded classname to register the module
-FLBuilder::register_module( 'Ceres\BeaverBuilder\Module\Simple', array(
+FLBuilder::register_module( 'Ceres\BeaverBuilder\Module\Boosted', array(
     'my-tab-1'      => array(
     'title'         => __( 'Tab 1', 'fl-builder' ),
     'sections'      => array(
