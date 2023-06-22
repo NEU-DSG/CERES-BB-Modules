@@ -24,7 +24,14 @@ class Simple extends FLBuilderModule {
     }
 
     public function test() {
-        return "simple test";
+        return "
+        <h1>Welcome to my website</h1>
+        <p>This is a simple example of hardcoded HTML within a BB module.</p>
+        <ul>
+        <li>This is issue#1</li>
+        <li>Soon will be working on issue#2</li>
+        </ul>
+        ";
     }
 }
 
