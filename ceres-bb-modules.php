@@ -11,12 +11,7 @@
 define( 'CERES_BB_MODULES_DIR', plugin_dir_path( __FILE__ ) );
 define( 'CERES_BB_MODULES_URL', plugins_url( '/', __FILE__ ) );
 
-function my_load_module_examples() {
-    if ( class_exists( 'FLBuilder' ) ) {
-        // Include your custom modules here.
 
-    }
-}
 add_action( 'init', 'ceres_load_bb_simple' );
 
 function ceres_load_bb_simple() {
