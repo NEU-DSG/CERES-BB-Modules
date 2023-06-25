@@ -26,8 +26,14 @@ switch ($_GET['type']) {
         $html = modifyStoryMap($_GET);
     break;
 
+    case 'table':
+        $html = modifyTable($GET);
+    break;
+
+
+
     default:
-        $html = "woot";
+        $html = "whoopsie. not a valid type param. at least not yet.";
     break;
 }
 
@@ -62,6 +68,12 @@ function modifyHtml(array $params): string {
     return $html;
 }
 
+function modifyTable(array $params): string {
+    $html = "<div id='ceres-container'>";
+
+    $html .= "</div>";
+    return $html;
+}
 
 
 function modifyList(array $params): string {
