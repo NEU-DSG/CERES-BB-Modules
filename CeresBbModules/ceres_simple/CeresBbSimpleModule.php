@@ -10,16 +10,14 @@ class Simple extends FLBuilderModule {
     public function __construct()
     {
         parent::__construct(array(
-            'name'            => __( 'CERES Simple BB module', 'fl-builder' ),
-            'description'     => __( 'Just Testing', 'fl-builder' ),
-            'group'           => __( 'CERES Classic', 'fl-builder' ),
-            'category'        => __( 'CERES', 'fl-builder' ),
-            'dir'             => CERES_BB_MODULES_DIR . 'CeresBbModules/ceres_simple',
-            'url'             => CERES_BB_MODULES_URL . 'CeresBbModules/ceres_simple',
-            'icon'            => 'button.svg',
-            'editor_export'   => true, // Defaults to true and can be omitted.
-            'enabled'         => true, // Defaults to true and can be omitted.
-            'partial_refresh' => false, // Defaults to false and can be omitted.
+            'name'        => __('CERES Simple BB module', 'fl-builder'),
+            'description' => __('A custom module that takes input text from the user and displays it.', 'fl-builder'),
+            'group'       => __( 'CERES Classic', 'fl-builder' ),
+            'category'    => __('CERES', 'fl-builder'),
+            'dir'         => CERES_BB_MODULES_DIR . 'CeresBbModules/ceres_simple',
+            'url'         => CERES_BB_MODULES_URL . 'CeresBbModules/ceres_simple',
+            'editor_export' => true,
+            'enabled'     => true,
         ));
     }
 
@@ -33,22 +31,36 @@ class Simple extends FLBuilderModule {
         </ul>
         ";
     }
+
+    public function render() {
+        $this->settings->user_input = htmlspecialchars($_POST['user_input']);
+        $user_input = $this->settings->user_input;
+        echo '<script>console.log("Render triggered: "'.$user_input.')</script>';
+        echo '<h4>' . $user_input . '</h4>';
+        echo '<hr>';
+    }
 }
 
 //use expanded classname to register the module
 FLBuilder::register_module( 'Ceres\BeaverBuilder\Module\Simple', array(
     'my-tab-1'      => array(
-    'title'         => __( 'Tab 1', 'fl-builder' ),
-    'sections'      => array(
-        'my-section-1'  => array(
-        'title'         => __( 'Section 1', 'fl-builder' ),
-        'fields'        => array(
-            'text'     => array(
-            'type'          => 'text',
-            'label'         => __( 'Text Field 1', 'fl-builder' ),
+        'title'     => __( 'Tab 2', 'fl-builder' ),
+        'sections'  => array(
+            'general' => array(
+                'title' => __( 'Section 1', 'fl-builder' ),
+                'fields' => array(
+                    'user_input' => array(
+                        'type'        => 'text',
+                        'label'       => 'User Input',
+                        'placeholder' => 'Enter your text here',
+                    ),
+                    'user_table' => array(
+                        'small' => '10x10',
+                        'medium' => '100x100',
+                        'large' => '1000x1000',
+                    ),
+                ),
             ),
-        )
-        )
-    )
-    )
+        ),
+    ),
 ) );
