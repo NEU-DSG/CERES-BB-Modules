@@ -23,6 +23,8 @@ function ceres_load_bb_simple() {
     if ( class_exists( 'FLBuilder' ) ) {
         require_once 'CeresBbModules/ceres_simple/CeresBbSimpleModule.php';
         require_once 'CeresBbModules/ceres_boosted/CeresBbBoostedModule.php';
+        require_once 'CeresBbModules/ceres_tmodule/CeresBbTModule1.php';
+        require_once 'CeresBbModules/ceres_table/CeresBbArrayTableModule.php';
     }
 
 }
