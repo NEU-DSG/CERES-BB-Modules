@@ -24,31 +24,43 @@ class ArrayTable extends FLBuilderModule {
     }
 
     public function test() {
-        $values = array(
-            'Small'  => '10x10',
-            'Medium' => '100x100',
-            'Large'  => '1000x1000'
-        );
         $settings = $this->settings;
         $selectedOption = isset($settings->select_option) ? $settings->select_option : 'Small';
+
         $table = '<table>';
         $table .= '<tr><th>Size</th><th>Dimensions</th></tr>';
 
         if ($selectedOption === 'All') {
-            foreach ($values as $size => $dimensions) {
-                $table .= '<tr>';
-                $table .= '<td>' . $size . '</td>';
-                $table .= '<td>' . $dimensions . '</td>';
-                $table .= '</tr>';
-            }
-        } else if (in_array($selectedOption, array('Small', 'Medium', 'Large'))) {
+            $smallValue = isset($settings->Small) ? $settings->Small : '10x10';
+            $mediumValue = isset($settings->Medium) ? $settings->Medium : '100x100';
+            $largeValue = isset($settings->Large) ? $settings->Large : '1000x1000';
+
+            $table .= '<tr>';
+            $table .= '<td>Small</td>';
+            $table .= '<td>' . $smallValue . '</td>';
+            $table .= '</tr>';
+
+            $table .= '<tr>';
+            $table .= '<td>Medium</td>';
+            $table .= '<td>' . $mediumValue . '</td>';
+            $table .= '</tr>';
+
+            $table .= '<tr>';
+            $table .= '<td>Large</td>';
+            $table .= '<td>' . $largeValue . '</td>';
+            $table .= '</tr>';
+        } else if ($selectedOption === 'Small' || $selectedOption === 'Medium' || $selectedOption === 'Large') {
+            $value = isset($settings->{$selectedOption}) ? $settings->{$selectedOption} : '';
+
             $table .= '<tr>';
             $table .= '<td>' . ucfirst($selectedOption) . '</td>';
-            $table .= '<td>' . $values[$selectedOption] . '</td>';
+            $table .= '<td>' . $value . '</td>';
             $table .= '</tr>';
         }
+
         $table .= '</table>';
-        echo $table;
+
+        return $table;
     }
 }
 
@@ -66,24 +78,24 @@ FLBuilder::register_module('Ceres\BeaverBuilder\Module\ArrayTable', array(
                         'default'       => 'Small',
                         'options'       => array(
                             'Small'      => __('Small', 'fl-builder'),
-                            'Medium'     => __('Medium', 'fl-builder'),
+                            'Medium'      => __('Medium', 'fl-builder'),
                             'Large'      => __('Large', 'fl-builder'),
-                            'All'        => __('All', 'fl-builder'),
+                            'All'      => __('All', 'fl-builder'),
                         ),
                         'toggle'        => array(
                             'Small'      => array(
                                 'fields'        => array('Small'),
                             ),
-                            'Medium'     => array(
+                            'Medium'      => array(
                                 'fields'        => array('Medium'),
                             ),
                             'Large'      => array(
                                 'fields'        => array('Large'),
                             ),
-                            'All'        => array(
-                                'fields'        => array('Small', 'Medium', 'Large'),
-                            ),
-                        ),
+                            'All'  => array(
+                                'fields' => array('Small', 'Medium', 'Large')
+                            )
+                        )
                     ),
                     'Small'   => array(
                         'type'          => 'text',
@@ -93,14 +105,14 @@ FLBuilder::register_module('Ceres\BeaverBuilder\Module\ArrayTable', array(
                     'Medium'   => array(
                         'type'          => 'text',
                         'label'         => __('Medium Value', 'fl-builder'),
-                        'default'       => '100x100',
+                        'default'       => '100x100'
                     ),
                     'Large'   => array(
                         'type'          => 'text',
                         'label'         => __('Large Value', 'fl-builder'),
                         'default'       => '1000x1000',
-                    ),
-                ),
+                    )
+                )
             ),
         ),
     ),
