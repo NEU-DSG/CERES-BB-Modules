@@ -1,6 +1,30 @@
 <?php
 namespace Ceres\BeaverBuilder\Utility;
 
+/*
+uncomment the bottom lines to show the results
+
+demonstrates the usage elsewhere
+each method corresponds to a set of shortcode options
+
+WP hijacks the direct url if you are going through a browser
+but you can just do this in a distinct localhost-accessible file
+using whatever path is right for your environment
+
+<?php
+
+require('/var/www/html/bb-wordpress/wp-content/plugins/CERES-BB-Modules/utility/Options.php');
+
+
+*/
+
+// print_r(Options::itemOptions());
+// print_r(Options::mapOptions());
+// print_r(Options::tileGalleryOptions());
+// print_r(Options::gallerySliderOptions());
+// print_r(Options::mediaPlaylistOptions());
+// print_r(Options::timelineOptions());
+
 /**
  * 
  * Comments after each option indicate the current display,
