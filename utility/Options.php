@@ -1,10 +1,6 @@
 <?php
 namespace Ceres\BeaverBuilder\Utility;
 
-ini_set('display_errors', '1');
-ini_set('display_startup_errors', '1');
-error_reporting(E_ALL);
-
 /*
 uncomment the top lines (print_r's) to show the results
 
