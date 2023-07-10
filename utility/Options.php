@@ -1,29 +1,54 @@
 <?php
 namespace Ceres\BeaverBuilder\Utility;
 
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
+
 /*
-uncomment the bottom lines to show the results
+uncomment the top lines (print_r's) to show the results
 
 demonstrates the usage elsewhere
 each method corresponds to a set of shortcode options
 
 WP hijacks the direct url if you are going through a browser
 but you can just do this in a distinct localhost-accessible file
-using whatever path is right for your environment
-
-<?php
-
-require('/var/www/html/bb-wordpress/wp-content/plugins/CERES-BB-Modules/utility/Options.php');
+using whatever path is right for your environment with the require_once
 
 
 */
 
-// print_r(Options::itemOptions());
-// print_r(Options::mapOptions());
-// print_r(Options::tileGalleryOptions());
-// print_r(Options::gallerySliderOptions());
-// print_r(Options::mediaPlaylistOptions());
-// print_r(Options::timelineOptions());
+//require_once('/var/www/html/bb-wordpress/wp-content/plugins/CERES-BB-Modules/utility/Options.php');
+
+echo "<h2>Item Options</h2>";
+echo "<pre>";
+print_r(Options::itemOptions());
+echo "</pre>";
+
+echo "<h2>Map Options</h2>";
+echo "<pre>";
+print_r(Options::mapOptions());
+echo "<pre>";
+
+echo "<h2>Tile Gallery Options</h2>";
+echo "<pre>";
+print_r(Options::tileGalleryOptions());
+echo "</pre>";
+
+echo "<h2>Gallery Slider Options</h2>";
+echo "<pre>";
+print_r(Options::gallerySliderOptions());
+echo "</pre>";
+
+echo "<h2>Media Playlist Options</h2>";
+echo "<pre>";
+print_r(Options::mediaPlaylistOptions());
+echo "</pre>";
+
+echo "<h2>Timeline Options</h2>";
+echo "<pre>";
+print_r(Options::timelineOptions());
+echo "</pre>";
 
 /**
  * 
