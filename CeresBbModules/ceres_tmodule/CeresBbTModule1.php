@@ -31,17 +31,17 @@ class TModule extends FLBuilderModule {
         return $settings;
     }
 
-    public function render()
-    {
-        $settings = $this->settings;
-        $module_id = $this->node;
-        $textarea_field = $settings->textarea_field;
-        if (isset($_POST['button2_' . $module_id])) {
-            $textarea_field = htmlspecialchars($_POST['textarea_field_' . $module_id]);
-            $this->settings->textarea_field = $textarea_field;
-        }
-        include $this->dir . '/includes/input-form.php';
-    }
+//    public function render()
+//    {
+//        $settings = $this->settings;
+//        $module_id = $this->node;
+//        $textarea_field = $settings->textarea_field;
+//        if (isset($_POST['button2_' . $module_id])) {
+//            $textarea_field = htmlspecialchars($_POST['textarea_field_' . $module_id]);
+//            $this->settings->textarea_field = $textarea_field;
+//        }
+//        include $this->dir . '/includes/input-form.php';
+//    }
 
 }
 
