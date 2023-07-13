@@ -4,21 +4,24 @@ namespace Ceres\BeaverBuilder\Module;
 
 use FLBuilderModule;
 use FLBuilder;
+use Ceres\BeaverBuilder\Utility\Options;
+
+// ini_set('display_errors', '1');
+// ini_set('display_startup_errors', '1');
+// error_reporting(E_ALL);
 
 
-error_reporting(E_ALL);
-
-class Simple extends FLBuilderModule {
+class ScriptsDemo extends FLBuilderModule {
 
     public function __construct()
     {
         parent::__construct(array(
-            'name'            => __( 'CERES Simple BB module', 'fl-builder' ),
-            'description'     => __( 'Just Testing', 'fl-builder' ),
+            'name'            => __( 'CERES Scripts Demo', 'fl-builder' ),
+            'description'     => __( 'Just demoing scripts for options', 'fl-builder' ),
             'group'           => __( 'CERES Classic', 'fl-builder' ),
             'category'        => __( 'CERES', 'fl-builder' ),
-            'dir'             => CERES_BB_MODULES_DIR . 'CeresBbModules/ceres_simple',
-            'url'             => CERES_BB_MODULES_URL . 'CeresBbModules/ceres_simple',
+            'dir'             => CERES_BB_MODULES_DIR . 'CeresBbModules/ceres_scripts_demo',
+            'url'             => CERES_BB_MODULES_URL . 'CeresBbModules/ceres_scripts_demo',
             'icon'            => 'button.svg',
             'editor_export'   => true, // Defaults to true and can be omitted.
             'enabled'         => true, // Defaults to true and can be omitted.
@@ -26,13 +29,18 @@ class Simple extends FLBuilderModule {
         ));
     }
 
-    public function test() {
-        return "simple test";
+    public function showOptionValues() {
+         return Options::itemOptions();
+        // return Options::mapOptions();
+        // return Options::tileGalleryOptions();
+        // return Options::gallerySliderOptions();
+        // return Options::mediaPlaylistOptions();
+        // return Options::itemOptions();
     }
 }
 
 //use expanded classname to register the module
-FLBuilder::register_module( 'Ceres\BeaverBuilder\Module\Simple', array(
+FLBuilder::register_module( 'Ceres\BeaverBuilder\Module\ScriptsDemo', array(
     'my-tab-1'      => array(
     'title'         => __( 'Tab 1', 'fl-builder' ),
     'sections'      => array(

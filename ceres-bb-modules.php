@@ -10,6 +10,7 @@
  */
 define( 'CERES_BB_MODULES_DIR', plugin_dir_path( __FILE__ ) );
 define( 'CERES_BB_MODULES_URL', plugins_url( '/', __FILE__ ) );
+require_once(CERES_BB_MODULES_DIR . '/utility/Options.php');
 
 function my_load_module_examples() {
     if ( class_exists( 'FLBuilder' ) ) {
@@ -25,6 +26,7 @@ function ceres_load_bb_simple() {
         require_once 'CeresBbModules/ceres_boosted/CeresBbBoostedModule.php';
         require_once 'CeresBbModules/ceres_tmodule/CeresBbTModule1.php';
         require_once 'CeresBbModules/ceres_table/CeresBbArrayTableModule.php';
+        require_once 'CeresBbModules/ceres_scripts_demo/CeresBbScriptsDemoModule.php';
     }
 
 }
