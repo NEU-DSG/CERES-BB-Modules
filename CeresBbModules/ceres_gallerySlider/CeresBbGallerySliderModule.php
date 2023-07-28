@@ -75,27 +75,27 @@ FLBuilder::register_module( 'Ceres\BeaverBuilder\Module\GallerySlider', array(
                         'options'       => Options::gallerySliderOptions()['image-size'],
                     ),
                     'autorotate'  => array(
-                        'type'          => 'select', // Change to 'select' field
+                        'type'          => 'select',
                         'label'         => __( 'Auto Rotate', 'fl-builder' ),
-                        'default'       => Options::gallerySliderOptions()['autorotate'] ? 'yes' : 'no', // Use 'yes' or 'no' as the options
+                        'default'       => Options::gallerySliderOptions()['autorotate'] ? 'yes' : 'no',
                         'options'       => array(
                             'yes' => __( 'Yes', 'fl-builder' ),
                             'no'  => __( 'No', 'fl-builder' ),
                         ),
                     ),
                     'next_prev_buttons'  => array(
-                        'type'          => 'select', // Change to 'select' field
+                        'type'          => 'select',
                         'label'         => __( 'Next/Prev Buttons', 'fl-builder' ),
-                        'default'       => Options::gallerySliderOptions()['next/prev buttons'] ? 'yes' : 'no', // Use 'yes' or 'no' as the options
+                        'default'       => Options::gallerySliderOptions()['next/prev buttons'] ? 'yes' : 'no',
                         'options'       => array(
                             'yes' => __( 'Yes', 'fl-builder' ),
                             'no'  => __( 'No', 'fl-builder' ),
                         ),
                     ),
                     'dot_pager'  => array(
-                        'type'          => 'select', // Change to 'select' field
+                        'type'          => 'select',
                         'label'         => __( 'Dot Pager', 'fl-builder' ),
-                        'default'       => Options::gallerySliderOptions()['dot pager'] ? 'yes' : 'no', // Use 'yes' or 'no' as the options
+                        'default'       => Options::gallerySliderOptions()['dot pager'] ? 'yes' : 'no',
                         'options'       => array(
                             'yes' => __( 'Yes', 'fl-builder' ),
                             'no'  => __( 'No', 'fl-builder' ),
