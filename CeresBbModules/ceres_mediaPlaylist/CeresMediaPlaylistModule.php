@@ -1,5 +1,7 @@
 <?php
 namespace Ceres\BeaverBuilder\Module;
+use Ceres\BeaverBuilder\Utility\Options;
+
 require_once __DIR__ . '/../../utility/Options.php';
 use FLBuilderModule;
 use FLBuilder;
@@ -11,7 +13,7 @@ class MediaPlaylist extends FLBuilderModule {
         parent::__construct(array(
             'name'            => __( 'CERES Media Playlist module', 'fl-builder' ),
             'description'     => __( 'Custom Media Playlist Module', 'fl-builder' ),
-            'group'           => __( 'CERES Classic', 'fl-builder' ),
+            'group'           => __( 'CERES Legacy', 'fl-builder' ),
             'category'        => __( 'CERES', 'fl-builder' ),
             'dir'             => CERES_BB_MODULES_DIR . 'CeresBbModules/ceres_mediaPlaylist',
             'url'             => CERES_BB_MODULES_URL . 'CeresBbModules/ceres_mediaPlaylist',
@@ -21,10 +23,6 @@ class MediaPlaylist extends FLBuilderModule {
             'partial_refresh' => false,
         ));
 
-    }
-
-    public function test() {
-        return "media playlist test";
     }
 
 }

@@ -1,5 +1,7 @@
 <?php
 namespace Ceres\BeaverBuilder\Module;
+use Ceres\BeaverBuilder\Utility\Options;
+
 require_once __DIR__ . '/../../utility/Options.php';
 use FLBuilderModule;
 use FLBuilder;
@@ -11,7 +13,7 @@ class GallerySlider extends FLBuilderModule {
         parent::__construct(array(
             'name'            => __( 'CERES Gallery Slider', 'fl-builder' ),
             'description'     => __( 'Custom Gallery Slider Module', 'fl-builder' ),
-            'group'           => __( 'CERES Classic', 'fl-builder' ),
+            'group'           => __( 'CERES Legacy', 'fl-builder' ),
             'category'        => __( 'CERES', 'fl-builder' ),
             'dir'             => CERES_BB_MODULES_DIR . 'CeresBbModules/ceres_gallerySlider',
             'url'             => CERES_BB_MODULES_URL . 'CeresBbModules/ceres_gallerySlider',
@@ -21,10 +23,6 @@ class GallerySlider extends FLBuilderModule {
             'partial_refresh' => false,
         ));
 
-    }
-
-    public function test() {
-        return "slider test";
     }
 
 }

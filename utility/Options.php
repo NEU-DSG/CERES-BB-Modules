@@ -1,5 +1,5 @@
 <?php
-namespace Ceres\BeaverBuilder\Module;
+namespace Ceres\BeaverBuilder\Utility;
 
 /*
 uncomment the bottom lines to show the results

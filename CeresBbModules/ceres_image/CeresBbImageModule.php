@@ -1,5 +1,7 @@
 <?php
 namespace Ceres\BeaverBuilder\Module;
+use Ceres\BeaverBuilder\Utility\Options;
+
 require_once __DIR__ . '/../../utility/Options.php';
 use FLBuilderModule;
 use FLBuilder;
@@ -11,7 +13,7 @@ class ImageModule extends FLBuilderModule {
         parent::__construct(array(
             'name'            => __( 'CERES Image BB module', 'fl-builder' ),
             'description'     => __( 'Custom Image Module', 'fl-builder' ),
-            'group'           => __( 'CERES Classic', 'fl-builder' ),
+            'group'           => __( 'CERES Legacy', 'fl-builder' ),
             'category'        => __( 'CERES', 'fl-builder' ),
             'dir'             => CERES_BB_MODULES_DIR . 'CeresBbModules/ceres_image',
             'url'             => CERES_BB_MODULES_URL . 'CeresBbModules/ceres_image',
@@ -21,51 +23,6 @@ class ImageModule extends FLBuilderModule {
             'partial_refresh' => false,
         ));
 
-        $this->add_css('input-form', $this->url . 'includes/input-form.css');
-    }
-
-    public function test() {
-        return "image test";
-    }
-
-    public function render()
-    {
-        $settings = $this->settings;
-
-        $imageSize = $settings->image_size;
-        $displayVideo = (bool) $settings->display_mode === 'video';
-        $displayIssuu = (bool) $settings->display_issuu;
-        $imageAlignment = $settings->image_alignment;
-        $captionAlign = $settings->caption_align;
-        $captionPosition = $settings->caption_position;
-        $zoomMode = $settings->zoom_mode;
-        $zoomPosition = $settings->zoom_position;
-        $enableZoom = ($zoomMode === 'zoom-in' || $zoomMode === 'zoom-out');
-
-        ob_start();
-
-        $variables = array(
-            'imageSize' => $imageSize,
-            'displayVideo' => $displayVideo,
-            'displayIssuu' => $displayIssuu,
-            'imageAlignment' => $imageAlignment,
-            'captionAlign' => $captionAlign,
-            'captionPosition' => $captionPosition,
-            'enableZoom' => $enableZoom,
-            'zoomPosition' => $zoomPosition,
-        );
-
-        extract($variables);
-        include plugin_dir_path(__FILE__) . '/includes/input-form.php';
-
-        $output = ob_get_clean();
-
-        echo $output;
-    }
-
-    public function enqueue_scripts()
-    {
-        $this->add_css('input-form', $this->url . 'includes/input-form.css');
     }
 
 }
