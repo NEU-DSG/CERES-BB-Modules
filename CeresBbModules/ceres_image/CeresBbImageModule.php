@@ -22,7 +22,43 @@ class ImageModule extends FLBuilderModule {
             'enabled'         => true,
             'partial_refresh' => false,
         ));
+    }
 
+    public function render() {
+        $settings = $this->settings;
+
+        switch($settings->display_mode) {
+            case 'image':
+                $this->render_image();
+                break;
+            case 'video':
+                $this->render_video();
+                break;
+            case 'both':
+                $this->render_image();
+                $this->render_video();
+                break;
+            default:
+                $this->render_image();
+                break;
+        }
+    }
+
+    private function render_image() {
+        $img_settings = array(
+            'photo_src' => 'https://cdn.vox-cdn.com/thumbor/KVLkvW-aKkZ4A3itAooco3lF6hw=/0x0:1920x1080/1200x800/filters:focal(807x387:1113x693)/cdn.vox-cdn.com/uploads/chorus_image/image/65447488/succession_s2_ka_1920.0.jpg',
+            'photo_alt' => 'Random pic'
+        );
+        echo FLBuilder::render_module_html('photo', $img_settings);
+    }
+
+    private function render_video() {
+        $video_settings = array(
+            'video_type'   => 'embed',
+            'embed_code'   => '<iframe width="560" height="315" src="https://www.youtube.com/embed/NcXsK_u4ixI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',  // replace VIDEO_ID with actual video id
+        );
+
+        echo FLBuilder::render_module_html('video', $video_settings);
     }
 
 }
