@@ -45,17 +45,24 @@ class ImageModule extends FLBuilderModule {
     }
 
     private function render_image() {
-        $img_settings = array(
-            'photo_src' => 'https://cdn.vox-cdn.com/thumbor/KVLkvW-aKkZ4A3itAooco3lF6hw=/0x0:1920x1080/1200x800/filters:focal(807x387:1113x693)/cdn.vox-cdn.com/uploads/chorus_image/image/65447488/succession_s2_ka_1920.0.jpg',
-            'photo_alt' => 'Random pic'
-        );
-        echo FLBuilder::render_module_html('photo', $img_settings);
+        echo FLBuilder::render_module_html('photo', array(
+            'crop'         => false,
+            'photo_url'        => 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png',
+            'photo_source'    => 'url',
+            'caption' => 'test image',
+            'show_caption' => $this->settings->caption_position === 'hover' ? 'hover':'below',
+            'attributes' => array(
+                'width'=>$this->settings->image_size,
+                'height' => $this->settings->image_size
+                ),
+        ));
     }
 
     private function render_video() {
         $video_settings = array(
             'video_type'   => 'embed',
             'embed_code'   => '<iframe width="560" height="315" src="https://www.youtube.com/embed/NcXsK_u4ixI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',  // replace VIDEO_ID with actual video id
+            'caption_position' => $this->settings->caption_position, // Use caption position from settings
         );
 
         echo FLBuilder::render_module_html('video', $video_settings);
@@ -67,44 +74,12 @@ FLBuilder::register_module( 'Ceres\BeaverBuilder\Module\ImageModule', array(
     'general'      => array(
         'title'         => __( 'General', 'fl-builder' ),
         'sections'      => array(
-            'DRS Items' => array(
-                'title'         => __( 'DRS Items', 'fl-builder' ),
-                'fields'        => array(
-                    'link_field1'     => array(
-                        'type'          => 'link',
-                        'label'         => __('Search for an item', 'fl-builder')
-                    )
-                )
-            ),
-            'DPLA Items' => array(
-                'title'         => __( 'DPLA Items', 'fl-builder' ),
-                'fields'        => array(
-                    'link_field2'     => array(
-                        'type'          => 'link',
-                        'label'         => __('Search for an item', 'fl-builder')
-                    )
-                )
-            ),
-            'Local Items' => array(
-                'title'         => __( 'Local Items', 'fl-builder' ),
-                'fields'        => array(
-                    'editor_field'   => array(
-                        'type'          => 'editor',
-                        'label'         => 'Add or browse local items',
-                        'media_buttons' => true,
-                        'rows'          => 10
-                    )
-                )
-            ),
-            'Selected Items' => array(
-                'title'         => __( 'Selected Items', 'fl-builder' ),
-            ),
             'Settings'  => array(
                 'title'         => __( 'Settings', 'fl-builder' ),
                 'fields'        => array(
                     'image_size'     => array(
                         'type'          => 'select',
-                        'default' => "85",
+                        'default'       => '85',
                         'label'         => __( 'Image Size', 'fl-builder' ),
                         'options'       => Options::itemOptions()['image-size'],
                     ),
@@ -174,5 +149,53 @@ FLBuilder::register_module( 'Ceres\BeaverBuilder\Module\ImageModule', array(
                 ),
             ),
         ),
+    ),
+    'multiple'      => array( // Tab
+        'title'         => __('DRS Item', 'fl-builder'), // Tab title
+        'sections'      => array( // Tab Sections
+            'general'       => array( // Section
+                'title'         => __( 'DRS Items', 'fl-builder' ),
+                'fields'        => array(
+                    'link_field1'     => array(
+                        'type'          => 'link',
+                        'label'         => __('Search for an item', 'fl-builder')
+                    )
+                )
+            )
+        )
+    ),
+    'toggle'      => array( // Tab
+        'title'         => __('DPLA Items', 'fl-builder'), // Tab title
+        'sections'      => array( // Tab Sections
+            'general'       => array( // Section
+                'title'         => __( 'DPLA Items', 'fl-builder' ),
+                'fields'        => array(
+                    'link_field1'     => array(
+                        'type'          => 'link',
+                        'label'         => __('Search for an item', 'fl-builder')
+                    )
+                )
+            )
+        )
+    ),
+    'include'      => array( // Tab
+        'title'         => __('Local Items', 'fl-builder'), // Tab title
+        'sections'      => array( // Tab Sections
+            'general'       => array( // Section
+                'title'         => __( 'Local Items', 'fl-builder' ),
+                'fields'        => array(
+                    'editor_field'   => array(
+                        'type'          => 'editor',
+                        'label'         => 'Add or browse local items',
+                        'media_buttons' => true,
+                        'rows'          => 10
+                    )
+                )
+            )
+        )
+    ),
+    'Selected Items' => array(
+        'title'         => __( 'Selected Items', 'fl-builder' ),
+        'sections'      => array()
     ),
 ) );

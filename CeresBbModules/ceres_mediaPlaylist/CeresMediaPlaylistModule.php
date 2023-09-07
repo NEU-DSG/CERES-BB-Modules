@@ -31,38 +31,6 @@ FLBuilder::register_module( 'Ceres\BeaverBuilder\Module\MediaPlaylist', array(
     'general'      => array(
         'title'         => __( 'General', 'fl-builder' ),
         'sections'      => array(
-            'DRS Items' => array(
-                'title'         => __( 'DRS Items', 'fl-builder' ),
-                'fields'        => array(
-                    'link_field1'     => array(
-                        'type'          => 'link',
-                        'label'         => __('Search for an item', 'fl-builder')
-                    )
-                )
-            ),
-            'DPLA Items' => array(
-                'title'         => __( 'DPLA Items', 'fl-builder' ),
-                'fields'        => array(
-                    'link_field2'     => array(
-                        'type'          => 'link',
-                        'label'         => __('Search for an item', 'fl-builder')
-                    )
-                )
-            ),
-            'Local Items' => array(
-                'title'         => __( 'Local Items', 'fl-builder' ),
-                'fields'        => array(
-                    'editor_field'   => array(
-                        'type'          => 'editor',
-                        'label'         => 'Add or browse local items',
-                        'media_buttons' => true,
-                        'rows'          => 10
-                    )
-                )
-            ),
-            'Selected Items' => array(
-                'title'         => __( 'Selected Items', 'fl-builder' ),
-            ),
             'Settings'  => array(
                 'title'         => __( 'Settings', 'fl-builder' ),
                 'fields'        => array(
@@ -81,5 +49,49 @@ FLBuilder::register_module( 'Ceres\BeaverBuilder\Module\MediaPlaylist', array(
                 ),
             ),
         ),
+    ),
+    'multiple'      => array( // Tab
+        'title'         => __('DRS Item', 'fl-builder'), // Tab title
+        'sections'      => array( // Tab Sections
+            'general'       => array( // Section
+                'title'         => __( 'DRS Items', 'fl-builder' ),
+                'fields'        => array(
+                    'link_field1'     => array(
+                        'type'          => 'link',
+                        'label'         => __('Search for an item', 'fl-builder')
+                    )
+                )
+            )
+        )
+    ),
+    'toggle'      => array( // Tab
+        'title'         => __('DPLA Items', 'fl-builder'), // Tab title
+        'sections'      => array( // Tab Sections
+            'general'       => array( // Section
+                'title'         => __( 'DPLA Items', 'fl-builder' ),
+                'fields'        => array(
+                    'link_field1'     => array(
+                        'type'          => 'link',
+                        'label'         => __('Search for an item', 'fl-builder')
+                    )
+                )
+            )
+        )
+    ),
+    'include'      => array( // Tab
+        'title'         => __('Local Items', 'fl-builder'), // Tab title
+        'sections'      => array( // Tab Sections
+            'general'       => array( // Section
+                'title'         => __( 'Local Items', 'fl-builder' ),
+                'fields'        => array(
+                    'editor_field'   => array(
+                        'type'          => 'editor',
+                        'label'         => 'Add or browse local items',
+                        'media_buttons' => true,
+                        'rows'          => 10
+                    )
+                )
+            )
+        )
     ),
 ) );

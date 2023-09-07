@@ -40,11 +40,11 @@ class Options {
 
         $itemOptions = [
             "image-size" => [  // for a select
-                85 => "Largest side is 85px",
-                170 => "Largest side is 170px",
-                340 => "Largest side is 340px",
-                500 => "Largest side is 500px",
-                1000 => "Largest side is 1000px"
+                "85" => "Largest side is 85px",
+                "170" => "Largest side is 170px",
+                "340" => "Largest side is 340px",
+                "500" => "Largest side is 500px",
+                "1000" => "Largest side is 1000px"
             ], 
             "display-video" => true, // bool for an input checkbox
             // display page turner
