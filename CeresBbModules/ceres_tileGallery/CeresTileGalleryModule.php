@@ -3,8 +3,6 @@ namespace Ceres\BeaverBuilder\Module;
 use Ceres\BeaverBuilder\Utility\Options;
 
 require_once __DIR__ . '/../../utility/Options.php';
-//require_once __DIR__ . '/../../../bb-plugin/modules/gallery/includes/frontend.js.php';
-//require_once __DIR__ . '/../../../bb-plugin/modules/gallery/includes/frontend.js.php';
 use FLBuilderModule;
 use FLBuilder;
 
@@ -25,15 +23,6 @@ class TileGallery extends FLBuilderModule {
             'partial_refresh' => false,
         ));
 
-        add_action('wp_enqueue_scripts', array($this, 'enqueue_photo_gallery_assets'));
-
-    }
-
-    public function enqueue_photo_gallery_assets() {
-        if (class_exists('FLBuilder')) {
-            wp_enqueue_script('gallery');
-            wp_enqueue_style('gallery');
-        }
     }
 
     public function render()
@@ -42,8 +31,12 @@ class TileGallery extends FLBuilderModule {
 
         // Set Gallery module properties
         $settings->photos = $this->settings->photos;
-        $settings->click_action = 'none';
+        $settings->click_action = 'lightbox';
         $settings->layout = 'collage';
+        $settings->photo_size = '200';
+        $settings->photo_spacing = '20';
+        $settings->show_caption = 'below';
+        $settings->lightbox_image_size = $this->settings->lightbox_image_size;
 
         // Render the Gallery module
         FLBuilder::render_module_html('gallery',$settings);
@@ -82,6 +75,11 @@ FLBuilder::register_module( 'Ceres\BeaverBuilder\Module\TileGallery', array(
                         'type'        => 'multiple-photos',
                         'label'       => __( 'Photos', 'fl-builder' ),
                         'connections' => array( 'multiple-photos' ),
+                    ),
+                    'lightbox_image_size' => array(
+                        'type'    => 'photo-sizes',
+                        'label'   => __( 'Lightbox Photo Size', 'fl-builder' ),
+                        'default' => 'large',
                     ),
                 ),
             ),
