@@ -21,7 +21,7 @@ add_action( 'init', 'ceres_load_bb_simple' );
 
 function ceres_load_bb_simple() {
     if ( class_exists( 'FLBuilder' ) ) {
-        require_once 'CeresBbModules/ceres_boosted/CeresBbBoostedModule.php';
+        require_once 'CeresBbModules/ceres_shortcode/CeresBbShortcodeModule.php';
         require_once 'CeresBbModules/ceres_drs/CeresBbDynamicTableModule.php';
         require_once 'CeresBbModules/ceres_image/CeresBbImageModule.php';
         require_once 'CeresBbModules/ceres_gallerySlider/CeresBbGallerySliderModule.php';
