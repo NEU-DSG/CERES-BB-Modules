@@ -39,6 +39,9 @@ class ShortcodeConversion extends FLBuilderModule {
     }
 
     public function update($settings) {
+        if($settings->generate_shortcode === 'yes') {
+            $settings->shortcode = $this->updateShortcode($settings);
+        }
         $shortcode = isset($settings->shortcode) ? $settings->shortcode : '';
         $parsedAttributes = $this->parse_toolkit_shortcode($shortcode);
 
@@ -51,6 +54,28 @@ class ShortcodeConversion extends FLBuilderModule {
         }
 
         return $settings;
+    }
+
+    public function updateShortcode($settings) {
+
+        $selectedOption = $settings->select_option;
+        switch ($selectedOption) {
+            case 'drstk_media':
+                return $this->generate_drstk_media_shortcode($settings);
+            case 'drstk_single':
+                return $this->generate_drstk_single_shortcode($settings);
+            case 'drstk_slider':
+                return $this->generate_drstk_slider_shortcode($settings);
+            case 'drstk_title':
+                return $this->generate_drstk_title_shortcode($settings);
+            case 'drstk_map':
+                break;
+            case 'drstk_timeline':
+                // Add shortcode generation logic for 'drstk_timeline'
+                // ...
+                break;
+        }
+        return '';
     }
 
     function parse_toolkit_shortcode($content) {
@@ -85,6 +110,62 @@ class ShortcodeConversion extends FLBuilderModule {
         return $shortcode_data;
     }
 
+    function generate_drstk_media_shortcode($settings) {
+        $shortcode = '[drstk_media';
+        $shortcode .= ' id="' . $settings->id . '"';
+        $shortcode .= ' height="' . $settings->height . '"';
+        $shortcode .= ' width="' . $settings->width . '"';
+        $shortcode .= ']';
+
+        return $shortcode;
+    }
+
+    function generate_drstk_single_shortcode($settings) {
+        $shortcode = '[drstk_single';
+        $shortcode .= ' id="' . $settings->id . '"';
+        $shortcode .= ' image_size="' . $settings->image_size . '"';
+        $shortcode .= ' display_mode="' . $settings->display_mode . '"';
+        $shortcode .= ' display_issuu="' . $settings->display_issuu . '"';
+        $shortcode .= ' image_alignment="' . $settings->image_alignment . '"';
+        $shortcode .= ' caption_align="' . $settings->caption_align . '"';
+        $shortcode .= ' caption_position="' . $settings->caption_position . '"';
+        $shortcode .= ' zoom_mode="' . $settings->zoom_mode . '"';
+        $shortcode .= ' zoom_position="' . $settings->zoom_position . '"';
+        $shortcode .= ']';
+
+        return $shortcode;
+    }
+
+    function generate_drstk_slider_shortcode($settings) {
+        $shortcode = '[drstk_slider';
+        $shortcode .= ' id="' . $settings->id . '"';
+        $shortcode .= ' image_upload="' . $settings->image_upload . '"';
+        $shortcode .= ' image_size="' . $settings->image_size . '"';
+        $shortcode .= ' autorotate="' . $settings->autorotate . '"';
+        $shortcode .= ' next_prev_buttons="' . $settings->next_prev_buttons . '"';
+        $shortcode .= ' dot_pager="' . $settings->dot_pager . '"';
+        $shortcode .= ' rotation_speed="' . $settings->rotation_speed . '"';
+        $shortcode .= ' max_height="' . $settings->max_height . '"';
+        $shortcode .= ']';
+
+        return $shortcode;
+    }
+
+    function generate_drstk_title_shortcode($settings) {
+        $shortcode = '[drstk_title';
+        $shortcode .= ' id="' . $settings->id . '"';
+        $shortcode .= ' style_type="' . $settings->style_type . '"';
+        $shortcode .= ' text_align="' . $settings->text_align . '"';
+        $shortcode .= ' cell_height="' . $settings->cell_height . '"';
+        $shortcode .= ' cell_width="' . $settings->cell_width . '"';
+        $shortcode .= ' photos="' . $settings->photos . '"';
+        $shortcode .= ' lightbox_image_size="' . $settings->lightbox_image_size . '"';
+        $shortcode .= ']';
+
+        return $shortcode;
+    }
+
+
 }
 
 FLBuilder::register_module('Ceres\BeaverBuilder\Module\ShortcodeConversion', array(
@@ -114,16 +195,47 @@ FLBuilder::register_module('Ceres\BeaverBuilder\Module\ShortcodeConversion', arr
                         'toggle'        => array(
                             '' => array(),
                             'drstk_media'  => array(
-                                'fields' => array('id', 'height', 'width')
+                                'fields' => array(
+                                    'id',
+                                    'height',
+                                    'width',
+                                    'generate_shortcode')
                             ),
                             'drstk_single'  => array(
-                                'fields' => array('id', 'image_size', 'display_mode', 'display_issuu', 'image_alignment', 'caption_align', 'caption_position', 'zoom_mode', 'zoom_position')
+                                'fields' => array(
+                                    'id',
+                                    'image_size',
+                                    'display_mode',
+                                    'display_issuu',
+                                    'image_alignment',
+                                    'caption_align',
+                                    'caption_position',
+                                    'zoom_mode',
+                                    'zoom_position',
+                                    'generate_shortcode')
                             ),
                             'drstk_slider'  => array(
-                                'fields' => array('id', 'image_upload', 'image_size', 'autorotate', 'next_prev_buttons', 'dot_pager', 'rotation_speed', 'max_height')
+                                'fields' => array(
+                                    'id',
+                                    'image_upload',
+                                    'image_size',
+                                    'autorotate',
+                                    'next_prev_buttons',
+                                    'dot_pager',
+                                    'rotation_speed',
+                                    'max_height',
+                                    'generate_shortcode')
                             ),
                             'drstk_title'  => array(
-                                'fields' => array('id', 'style_type', 'text_align', 'cell_height', 'cell_width', 'photos', 'lightbox_image_size')
+                                'fields' => array(
+                                    'id',
+                                    'style_type',
+                                    'text_align',
+                                    'cell_height',
+                                    'cell_width',
+                                    'photos',
+                                    'lightbox_image_size',
+                                    'generate_shortcode')
                             ),
                         ),
                     ),
@@ -294,6 +406,15 @@ FLBuilder::register_module('Ceres\BeaverBuilder\Module\ShortcodeConversion', arr
                         'type'    => 'photo-sizes',
                         'label'   => __( 'Lightbox Photo Size', 'fl-builder' ),
                         'default' => '',
+                    ),
+                    'generate_shortcode' => array(
+                        'type' => 'select',
+                        'label' => __('Generate Shortcode', 'fl-builder'),
+                        'default' => 'no',
+                        'options'       => array(
+                            'yes' => __( 'yes', 'fl-builder' ),
+                            'no'  => __( 'no', 'fl-builder' ),
+                        ),
                     ),
                 ),
             ),
