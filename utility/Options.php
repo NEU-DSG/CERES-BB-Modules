@@ -40,11 +40,11 @@ class Options {
 
         $itemOptions = [
             "image-size" => [  // for a select
-                1 => "Largest side is 85px",
-                2 => "Largest side is 170px",
-                3 => "Largest side is 340px",
-                4 => "Largest side is 500px",
-                5 => "Largest side is 1000px"
+                "85" => "Largest side is 85px",
+                "170" => "Largest side is 170px",
+                "340" => "Largest side is 340px",
+                "500" => "Largest side is 500px",
+                "1000" => "Largest side is 1000px"
             ], 
             "display-video" => true, // bool for an input checkbox
             // display page turner
@@ -105,7 +105,7 @@ class Options {
 
     public static function tileGalleryOptions() {
         $tileGalleryOptions = [
-            "tyle-type" => [ // for a select
+            "style-type" => [ // for a select
                 "pinterest-below" => "Pinterest style with caption below",
                 "pinterest-hover" => "Pinterest style with caption on hover",
                 "even-row" => "Even rows with caption on hover",
