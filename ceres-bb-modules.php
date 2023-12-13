@@ -31,7 +31,7 @@ function ceres_load_bb_simple() {
         require_once( 'CeresBbModules/ceres_gallerySlider/CeresBbGallerySliderModule.php');
         require_once( 'CeresBbModules/ceres_mediaPlaylist/CeresMediaPlaylistModule.php');
         require_once( 'CeresBbModules/ceres_tileGallery/CeresTileGalleryModule.php');
-        
+        require_once( 'CeresBbModules/ceres_timeline/CeresTimelineModule.php');
     }
 }
 
