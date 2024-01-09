@@ -13,7 +13,7 @@ class MediaPlaylist extends FLBuilderModule {
         parent::__construct(array(
             'name'            => __( 'CERES Media Playlist module', 'fl-builder' ),
             'description'     => __( 'Custom Media Playlist Module', 'fl-builder' ),
-            'group'           => __( 'CERES Legacy', 'fl-builder' ),
+            'group'           => __( 'CERES v1', 'fl-builder' ),
             'category'        => __( 'CERES', 'fl-builder' ),
             'dir'             => CERES_BB_MODULES_DIR . 'CeresBbModules/ceres_mediaPlaylist',
             'url'             => CERES_BB_MODULES_URL . 'CeresBbModules/ceres_mediaPlaylist',

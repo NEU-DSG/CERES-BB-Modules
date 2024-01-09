@@ -16,7 +16,7 @@ class ShortcodeConversion extends FLBuilderModule {
         parent::__construct(array(
             'name'            => __( 'CERES Shortcode BB module', 'fl-builder' ),
             'description'     => __( 'Just Testing', 'fl-builder' ),
-            'group'           => __( 'CERES Boosted', 'fl-builder' ),
+            'group'           => __( 'CERES v2', 'fl-builder' ),
             'category'        => __( 'CERES', 'fl-builder' ),
             'dir'             => CERES_BB_MODULES_DIR . 'CeresBbModules/ceres_shortcode',
             'url'             => CERES_BB_MODULES_URL . 'CeresBbModules/ceres_shortcode',

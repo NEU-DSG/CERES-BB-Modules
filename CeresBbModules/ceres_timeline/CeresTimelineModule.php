@@ -13,7 +13,7 @@ class TimelineModule extends FLBuilderModule {
         parent::__construct(array(
             'name'            => __( 'CERES Timeline module', 'fl-builder' ),
             'description'     => __( 'Custom Timeline Module', 'fl-builder' ),
-            'group'           => __( 'CERES Legacy', 'fl-builder' ),
+            'group'           => __( 'CERES v1', 'fl-builder' ),
             'category'        => __( 'CERES', 'fl-builder' ),
             'dir'             => CERES_BB_MODULES_DIR . 'CeresBbModules/ceres_timeline',
             'url'             => CERES_BB_MODULES_URL . 'CeresBbModules/ceres_timeline',
