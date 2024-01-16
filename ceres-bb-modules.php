@@ -9,11 +9,6 @@
  * Author URI: https://dsg.northeastern.edu/
  */
 
-use function Ceres\BeaverBuilder\Utility\getMockShortcodeResponse;
-
-ini_set('display_errors', '1');
-ini_set('display_startup_errors', '1');
-error_reporting(E_ALL);
  
 require_once( 'utility/mockDrstkShortcodes.php');
 
@@ -34,6 +29,8 @@ function ceres_load_bb_simple() {
         require_once( 'CeresBbModules/ceres_timeline/CeresTimelineModule.php');
         require_once( 'CeresBbModules/ceres_map/CeresMapModule.php');
     }
+
+    require_once( 'utility/CeresAdapter.php ');
 }
 
 
