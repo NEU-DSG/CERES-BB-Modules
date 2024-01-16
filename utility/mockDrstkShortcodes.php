@@ -9,27 +9,27 @@ class mockDrstkShortcodes
         $dom = new DOMDocument();
         switch ($shortcodeType) {
             case 'single':
-                $dom->loadHTMLFile(CERES_ROOT_DIR . '/data/rendererTemplates/drstkSingle.html');
+                $html = file_get_contents(CERES_ROOT_DIR . '/data/rendererTemplates/drstkSingle.html');
                 break;
 
             case 'tile':
-                $dom->loadHTMLFile(CERES_ROOT_DIR . '/data/rendererTemplates/drstkTile.html');
+                $html = file_get_contents(CERES_ROOT_DIR . '/data/rendererTemplates/drstkTile.html');
                 break;
 
             case 'map':
-                $dom->loadHTMLFile(CERES_ROOT_DIR . '/data/rendererTemplates/drstkMap.html');
+                $html = file_get_contents(CERES_ROOT_DIR . '/data/rendererTemplates/drstkMap.html');
                 break;
 
             case 'media':
-                $dom->loadHTMLFile(CERES_ROOT_DIR . '/data/rendererTemplates/drstkMedia.html');
+                $html = file_get_contents(CERES_ROOT_DIR . '/data/rendererTemplates/drstkMedia.html');
                 break;
 
             case 'timeline':
-                $dom->loadHTMLFile(CERES_ROOT_DIR . '/data/rendererTemplates/drstkTimeline.html');
+                $html = file_get_contents(CERES_ROOT_DIR . '/data/rendererTemplates/drstkTimeline.html');
                 break;
 
             case 'slider':
-                $dom->loadHTMLFile(CERES_ROOT_DIR . '/data/rendererTemplates/drstkSlider.html');
+                $html = file_get_contents(CERES_ROOT_DIR . '/data/rendererTemplates/drstkSlider.html');
                 break;
 
             default:
