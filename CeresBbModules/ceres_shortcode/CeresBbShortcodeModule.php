@@ -5,7 +5,7 @@ use Ceres\BeaverBuilder\Utility\Options;
 
 require_once __DIR__ . '/../../utility/Options.php';
 use Ceres\BeaverBuilder\Utility\mockDrstkShortcodes;
-require_once __DIR__ . '/../../utility/mockDrstkShortcodes.php';
+require_once __DIR__ . '/../../utility/CeresAdapter.php';
 use FLBuilderModule;
 use FLBuilder;
 

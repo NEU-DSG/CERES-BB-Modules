@@ -10,11 +10,13 @@
  */
 
  
-require_once( 'utility/mockDrstkShortcodes.php');
+
 
 define( 'CERES_BB_MODULES_DIR', plugin_dir_path( __FILE__ ) );
 define( 'CERES_BB_MODULES_URL', plugins_url( '/', __FILE__ ) );
 define( 'CERES_ROOT_DIR', dirname(__FILE__, 2) . '/drs-toolkit-wp-plugin/libraries/Ceres');
+
+require_once( CERES_BB_MODULES_DIR . 'utility/CeresAdapter.php');
 
 add_action( 'init', 'ceres_load_bb_simple' );
 
@@ -30,7 +32,7 @@ function ceres_load_bb_simple() {
         require_once( 'CeresBbModules/ceres_map/CeresMapModule.php');
     }
 
-    require_once( 'utility/CeresAdapter.php ');
+    
 }
 
 

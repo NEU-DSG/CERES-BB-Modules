@@ -3,6 +3,15 @@ namespace Ceres\BeaverBuilder\Utility;
 
 class CeresAdapter {
 
+
+    private array $v1ImageCeresOptions;
+    private array $v1GallerySliderCeresOptions;
+    private array $v1MapCeresOptions;
+    private array $v1TileGalleryCeresOptions;
+    private array $v1TimelineCeresOptions;
+    private array $v1MediaPlaylistCeresOptions;
+    private array $v1LeafletMapCeresOptions;
+    
     /**
      * getCeresHtml
      * 
@@ -13,7 +22,7 @@ class CeresAdapter {
      * @param array $settings
      * @return void
      */
-    public function getCeresHtml(string $moduleType, array $settings) {
+    public function getCeresHtml(string $moduleType, object $settings) {
 
         switch ($moduleType) {
             case 'v1_image':
@@ -33,7 +42,7 @@ class CeresAdapter {
                 break;
 
             case 'v1_timeline':
-                $html = $this->getV1TileGalleryHtml($settings);
+                $html = $this->getV1TimelineHtml($settings);
                 break;
 
             case 'v1_mediaPlaylist':
@@ -84,5 +93,46 @@ class CeresAdapter {
         // $html = file_get_contents(CERES_ROOT_DIR . '/data/rendererTemplates/drstkSingle.html');
         //return $html;
     }
+
+
+
+    /* Functions to parse the settings */
+
+    protected function parseV1ImageSettings(object $settings): array {
+
+    }
+
+
+    protected function parseV1GallerySliderSettings(object $settings): array {
+        
+    }
+
+
+    protected function parseV1MapSettings(object $settings): array {
+        
+    }
+
+
+    protected function parseV1TileGallerySettings(object $settings): array {
+        
+    }
+
+
+    protected function parseV1TimelineSettings(object $settings): array {
+        
+    }
+
+
+    protected function parseV1MediaPlaylistSettings(object $settings): array {
+        
+    }
+
+
+    protected function parseV1LeafletMapSettings(object $settings): array {
+        
+    }
+
+
+
 
 }
