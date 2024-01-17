@@ -16,11 +16,11 @@ class CeresAdapter {
     public function getCeresHtml(string $moduleType, array $settings) {
 
         switch ($moduleType) {
-            case 'v1_image':
+            case 'v1_single':
                 $html = $this->getV1ImageHtml($settings);
                 break;
 
-            case 'v1_gallerySlider':
+            case 'v1_slider':
                 $html = $this->getV1GallerySliderHtml($settings);
                 break;
 
@@ -28,7 +28,7 @@ class CeresAdapter {
                 $html = $this->getV1MapHtml($settings);
                 break;
 
-            case 'v1_tileGallery':
+            case 'v1_tile':
                 $html = $this->getV1TileGalleryHtml($settings);
                 break;
 
@@ -36,7 +36,7 @@ class CeresAdapter {
                 $html = $this->getV1TileGalleryHtml($settings);
                 break;
 
-            case 'v1_mediaPlaylist':
+            case 'v1_media':
                 $html = $this->getV1MediaPlaylistHtml($settings);
                 break;
 
@@ -51,6 +51,7 @@ class CeresAdapter {
     /* All functions below that use file_get_contents are temporary for dev and testing */
 
     protected function getV1ImageHtml(array $settings): string {
+        print_r("Image module called");
         $html = file_get_contents(CERES_ROOT_DIR . '/data/rendererTemplates/drstkSingle.html');
         return $html;
     }

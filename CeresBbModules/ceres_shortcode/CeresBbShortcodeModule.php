@@ -2,10 +2,9 @@
 // namespacing this into CERES, not the weak file name approach BB recommends
 namespace Ceres\BeaverBuilder\Module;
 use Ceres\BeaverBuilder\Utility\Options;
-
+use Ceres\BeaverBuilder\Utility\CeresAdapter;
+require_once __DIR__ . '/../../utility/CeresAdapter.php';
 require_once __DIR__ . '/../../utility/Options.php';
-use Ceres\BeaverBuilder\Utility\mockDrstkShortcodes;
-require_once __DIR__ . '/../../utility/mockDrstkShortcodes.php';
 use FLBuilderModule;
 use FLBuilder;
 
@@ -34,10 +33,11 @@ class ShortcodeConversion extends FLBuilderModule {
             $shortcode_data = $this->parse_toolkit_shortcode($shortcode)[0];
             if (!empty($shortcode_data)) {
                 $identifier = $shortcode_data['name'];
-                $identifier = str_replace("drstk_", "", $identifier); // Corrected line
+                $identifier = str_replace("drstk_", "v1_", $identifier); // Corrected line
+                print_r($identifier);
                 if(!empty($identifier)) {
-                    $mockedShortcodes = new mockDrstkShortcodes();
-                    $mockedResponse = $mockedShortcodes->getMockShortcodeResponse($identifier);
+                    $mockedShortcodes = new CeresAdapter();
+                    $mockedResponse = $mockedShortcodes->getCeresHtml($identifier,$shortcode_data['settings']);
                     echo $mockedResponse;
                 }
             } else {
