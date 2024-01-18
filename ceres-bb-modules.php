@@ -9,8 +9,8 @@
  * Author URI: https://dsg.northeastern.edu/
  */
 
- 
 
+require_once( 'utility/CeresAdapter.php');
 
 define( 'CERES_BB_MODULES_DIR', plugin_dir_path( __FILE__ ) );
 define( 'CERES_BB_MODULES_URL', plugins_url( '/', __FILE__ ) );
@@ -30,9 +30,19 @@ function ceres_load_bb_simple() {
         require_once( 'CeresBbModules/ceres_tileGallery/CeresTileGalleryModule.php');
         require_once( 'CeresBbModules/ceres_timeline/CeresTimelineModule.php');
         require_once( 'CeresBbModules/ceres_map/CeresMapModule.php');
+    } else {
+        add_action('admin_notices', 'ceres_display_missing_flbuilder_notice');
     }
-
-    
 }
+
+function ceres_display_missing_flbuilder_notice() {
+    ?>
+    <div class="notice notice-error is-dismissible">
+        <p><?php _e( 'CERES BeaverBuilder Modules require the FLBuilder plugin to be installed and activated. Please install and activate FLBuilder to use these modules.', 'ceres-bb-modules' ); ?></p>
+    </div>
+    <?php
+}
+
+
 
 

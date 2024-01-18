@@ -3,14 +3,64 @@ namespace Ceres\BeaverBuilder\Utility;
 
 class CeresAdapter {
 
+    /* arrays of valid settings for each module in CERES-BB */
+    
+    private array $v1ImageCeresOptions = [
+        'image_size',
+        'display_mode',
+        'toggle',
+        'help',
+        'display_issuu',
+        'image_alignment',
+        'caption_align',
+        'caption_position',
+        'zoom_mode',
+        'toggle',
+        'zoom_position'];
+    private array $v1GallerySliderCeresOptions = [
+        'image_upload',
+        'image_size',
+        'autorotate',
+        'next_prev_buttons',
+        'dot_pager',
+        'rotation_speed',
+        'max_height',
+        'link_field1',
+        'editor_field'];
+    private array $v1MapCeresOptions = [
+        'fields',
+        'center_lat',
+        'center_long',
+        'default_layers',
+        'show_title',
+        'show_description',
+        'show_link'];
+    private array $v1TileGalleryCeresOptions = [
+        'style_type',
+        'text_align',
+        'cell_height',
+        'cell_width',
+        'photos',
+        'lightbox_image_size',
+        'metadata',
+        'link_field1',
+        'editor_field'];
 
-    private array $v1ImageCeresOptions;
-    private array $v1GallerySliderCeresOptions;
-    private array $v1MapCeresOptions;
-    private array $v1TileGalleryCeresOptions;
-    private array $v1TimelineCeresOptions;
-    private array $v1MediaPlaylistCeresOptions;
-    private array $v1LeafletMapCeresOptions;
+    private array $v1TimelineCeresOptions = [
+        'start_date_boundary',
+        'end_date_boundary',
+        'metadata',
+        'scale_increments',
+        'link_field1',
+        'editor_field'];
+
+    private array $v1MediaPlaylistCeresOptions = [
+        'height',
+        'width',
+        'link_field1',
+        'editor_field'];
+
+    private array $leafletMapCeresOptions;
     
     /**
      * getCeresHtml
@@ -25,11 +75,11 @@ class CeresAdapter {
     public function getCeresHtml(string $moduleType, object $settings) {
 
         switch ($moduleType) {
-            case 'v1_image':
+            case 'v1_single':
                 $html = $this->getV1ImageHtml($settings);
                 break;
 
-            case 'v1_gallerySlider':
+            case 'v1_slider':
                 $html = $this->getV1GallerySliderHtml($settings);
                 break;
 
@@ -37,7 +87,7 @@ class CeresAdapter {
                 $html = $this->getV1MapHtml($settings);
                 break;
 
-            case 'v1_tileGallery':
+            case 'v1_tile':
                 $html = $this->getV1TileGalleryHtml($settings);
                 break;
 
@@ -45,11 +95,11 @@ class CeresAdapter {
                 $html = $this->getV1TimelineHtml($settings);
                 break;
 
-            case 'v1_mediaPlaylist':
+            case 'v1_media':
                 $html = $this->getV1MediaPlaylistHtml($settings);
                 break;
 
-            case 'leafletMap':
+            case 'leaflet_map':
                 $html = $this->getLeafletMapHtml($settings);
                 break;
             }
@@ -60,6 +110,7 @@ class CeresAdapter {
     /* All functions below that use file_get_contents are temporary for dev and testing */
 
     protected function getV1ImageHtml(array $settings): string {
+        print_r("Image module called");
         $html = file_get_contents(CERES_ROOT_DIR . '/data/rendererTemplates/drstkSingle.html');
         return $html;
     }
