@@ -20,6 +20,53 @@ class MapModule extends FLBuilderModule {
             'partial_refresh' => false,
         ));
 
+        wp_enqueue_style('leaflet-css', 'https://unpkg.com/leaflet@1.0.0-rc.2/dist/leaflet.css');
+        wp_enqueue_script('leaflet-js', 'https://unpkg.com/leaflet@1.0.0-rc.2/dist/leaflet.js', array(), null, true);
+
+
+        wp_enqueue_style('bootstrap-css', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css');
+        wp_enqueue_script('jquery', 'https://code.jquery.com/jquery-3.1.0.min.js', array(), '3.1.0', true);
+
+        wp_enqueue_script('wkt', CERES_BB_MODULES_URL . '../drs-toolkit-wp-plugin/libraries/Ceres/assets/js/leaflet/brc/wicket-1.3.8.js', array(), null, true);
+        wp_enqueue_script('bostonboundaries', CERES_BB_MODULES_URL . '../drs-toolkit-wp-plugin/libraries/Ceres/assets/js/leaflet/brc/bostonboundaries.js', array(), null, true);
+        wp_enqueue_script('leaflet-boundary-canvas', CERES_BB_MODULES_URL . '../drs-toolkit-wp-plugin/libraries/Ceres/assets/js/leaflet/brc/leaflet-boundary-canvas.js', array(), null, true);
+        wp_enqueue_script('leaflet-markercluster', CERES_BB_MODULES_URL . '../drs-toolkit-wp-plugin/libraries/Ceres/assets/js/leaflet/leaflet-js-markercluster/leaflet.markercluster.js', array(), null, true);
+        wp_enqueue_script('markerClusterGroup', CERES_BB_MODULES_URL . '../drs-toolkit-wp-plugin/libraries/Ceres/assets/js/leaflet/leaflet-js-markercluster/leaflet.markercluster-src.js', array(), null, true);
+        wp_enqueue_script('fuse-leaflet-plugin-6-6-2', CERES_BB_MODULES_URL . '../drs-toolkit-wp-plugin/libraries/Ceres/assets/js/leaflet/fuse-leaflet-plugin-6-6-2.js', array(), null, true);
+        wp_enqueue_script('leaflet-plugin-mask', CERES_BB_MODULES_URL . '../drs-toolkit-wp-plugin/libraries/Ceres/assets/js/leaflet/leafet-plugin-mask.js', array(), null, true);
+        wp_enqueue_script('L', CERES_BB_MODULES_URL . '../drs-toolkit-wp-plugin/libraries/Ceres/assets/js/leaflet/leaflet1.7.1.js', array(), null, true);
+        wp_enqueue_script('leaflet-plugin-geolet2', CERES_BB_MODULES_URL . '../drs-toolkit-wp-plugin/libraries/Ceres/assets/js/leaflet/leaflet-plugin-geolet.js', array(), null, true);
+        wp_enqueue_script('leaflet-plugin-locate', CERES_BB_MODULES_URL . '../drs-toolkit-wp-plugin/libraries/Ceres/assets/js/leaflet/leaflet-plugin-locate.js', array(), null, true);
+
+        wp_enqueue_script('leaflet-core-js', CERES_BB_MODULES_URL . 'Leaflet-core/assets/js/leaflet/brc/leaflet-brc-project.js', array(), null, true);
+
+        wp_enqueue_style('leaflet-brc-project-css', CERES_BB_MODULES_URL . 'Leaflet-core/assets/css/leaflet/brc/leaflet-brc-project.css', array('leaflet-js'), null, true);
+        wp_enqueue_style('leaflet-brc-project-storymap', CERES_BB_MODULES_URL . 'Leaflet-core/assets/css/leaflet/brc/leaflet-brc-project-storymap.css', array('leaflet-js'), null, true);
+        wp_enqueue_style('leaflet-brc-project', CERES_BB_MODULES_URL . 'Leaflet-core/assets/css/leaflet/brc/leaflet-brc-project.css');
+
+        // LEAFLET JS
+        wp_enqueue_script('config-js', CERES_BB_MODULES_URL . 'Leaflet-core/assets/js/leaflet/brc/config.js', array(), null, true);
+        wp_enqueue_script('common-js', CERES_BB_MODULES_URL . 'Leaflet-core/assets/js/leaflet/brc/common.js', array(), null, true);
+        wp_enqueue_script('boston-boundary', CERES_BB_MODULES_URL . 'Leaflet-core/assets/js/leaflet/brc/bostonboundaries.js', array(), null, true);
+        wp_enqueue_script('leafet-plugin-mask', CERES_BB_MODULES_URL . 'Leaflet-core/assets/js/leaflet/brc/leafet-plugin-mask.js', array(), null, true);
+        wp_enqueue_script('leaflet-boundary-canvas', CERES_BB_MODULES_URL . 'Leaflet-core/assets/js/leaflet/brc/leaflet-boundary-canvas.js', array(), null, true);
+        wp_enqueue_script('leaflet-brc-project-storymap', CERES_BB_MODULES_URL . 'Leaflet-core/assets/js/leaflet/brc/leaflet-brc-project-storymap.js', array(), null, true);
+        wp_enqueue_script('leaflet-plugin-geolet', CERES_BB_MODULES_URL . 'Leaflet-core/assets/js/leaflet/brc/leaflet-plugin-geolet.js', array(), null, true);
+
+        // LEAFLET CSS
+        wp_enqueue_style('leaflet-brc-project', CERES_BB_MODULES_URL . '../drs-toolkit-wp-plugin/libraries/Ceres/assets/css/leaflet/brc/leaflet-brc-project.css');
+        wp_enqueue_style('MarkerCluster', CERES_BB_MODULES_URL . '../drs-toolkit-wp-plugin/libraries/Ceres/assets/css/leaflet/leaflet-js-markercluster/MarkerCluster.css');
+        wp_enqueue_style('MarkerCluster-Default', CERES_BB_MODULES_URL . '../drs-toolkit-wp-plugin/libraries/Ceres/assets/css/leaflet/leaflet-js-markercluster/MarkerCluster.Default.css');
+        wp_enqueue_style('leaflet', CERES_BB_MODULES_URL . '../drs-toolkit-wp-plugin/libraries/Ceres/assets/css/leaflet/leaflet.css');
+        wp_enqueue_style('leaflet-brc-project', CERES_BB_MODULES_URL . '../drs-toolkit-wp-plugin/libraries/Ceres/assets/css/leaflet/leaflet-brc-project.css');
+        wp_enqueue_style('leaflet-js-locate-plugin', CERES_BB_MODULES_URL . '../drs-toolkit-wp-plugin/libraries/Ceres/assets/css/leaflet/leaflet-js-locate-plugin.css');
+
+        wp_localize_script('leaflet-core-js', 'leaflet_core_data', array(
+            'image_url_1' => CERES_BB_MODULES_URL . 'Leaflet-core/assets/images/brc/external-link.svg',
+            'image_url_2' => CERES_BB_MODULES_URL . 'Leaflet-core/assets/images/brc/marker-icon-2x-blue.png',
+            'image_url_3' => CERES_BB_MODULES_URL . 'Leaflet-core/assets/images/brc/marker-icon-2x-red.png',
+            'image_url_4' => CERES_BB_MODULES_URL . 'Leaflet-core/assets/images/brc/marker-shadow.png',
+        ));
     }
 
     public function render()
@@ -33,8 +80,10 @@ class MapModule extends FLBuilderModule {
         $show_link = $this->settings->show_link;
 
         echo '<div class="custom-map" data-default-zoom="' . $default_zoom . '" data-center-lat="' . $center_lat . '" data-center-long="' . $center_long . '" data-default-layers="' . $default_layers . '" data-show-title="' . $show_title . '" data-show-description="' . $show_description . '" data-show-link="' . $show_link . '">';
-        echo 'Map content goes here';
+        echo '<div id="map" style="height: 400px;"></div>';
+        include CERES_BB_MODULES_DIR . '../../Leaflet-core/brc-leaflet.html';
         echo '</div>';
+
     }
 }
 
