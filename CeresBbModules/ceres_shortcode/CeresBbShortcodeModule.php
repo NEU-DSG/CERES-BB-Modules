@@ -2,7 +2,8 @@
 // namespacing this into CERES, not the weak file name approach BB recommends
 namespace Ceres\BeaverBuilder\Module;
 use Ceres\BeaverBuilder\Utility\Options;
-
+use Ceres\BeaverBuilder\Utility\CeresAdapter;
+require_once __DIR__ . '/../../utility/CeresAdapter.php';
 require_once __DIR__ . '/../../utility/Options.php';
 use FLBuilderModule;
 use FLBuilder;
@@ -14,10 +15,10 @@ class ShortcodeConversion extends FLBuilderModule {
         parent::__construct(array(
             'name'            => __( 'CERES Shortcode BB module', 'fl-builder' ),
             'description'     => __( 'Just Testing', 'fl-builder' ),
-            'group'           => __( 'CERES Boosted', 'fl-builder' ),
+            'group'           => __( 'CERES v2', 'fl-builder' ),
             'category'        => __( 'CERES', 'fl-builder' ),
-            'dir'             => CERES_BB_MODULES_DIR . 'CeresBbModules/ceres_drs',
-            'url'             => CERES_BB_MODULES_URL . 'CeresBbModules/ceres_drs',
+            'dir'             => CERES_BB_MODULES_DIR . 'CeresBbModules/ceres_shortcode',
+            'url'             => CERES_BB_MODULES_URL . 'CeresBbModules/ceres_shortcode',
             'icon'            => 'button.svg',
             'editor_export'   => true,
             'enabled'         => true,
@@ -31,12 +32,20 @@ class ShortcodeConversion extends FLBuilderModule {
         if (!empty($shortcode)) {
             $shortcode_data = $this->parse_toolkit_shortcode($shortcode)[0];
             if (!empty($shortcode_data)) {
-                echo do_shortcode($shortcode);
+                $identifier = $shortcode_data['name'];
+                $identifier = str_replace("drstk_", "v1_", $identifier); // Corrected line
+                print_r($identifier);
+                if(!empty($identifier)) {
+                    $mockedShortcodes = new CeresAdapter();
+                    $mockedResponse = $mockedShortcodes->getCeresHtml($identifier,$shortcode_data['settings']);
+                    echo $mockedResponse;
+                }
             } else {
                 echo 'No valid shortcode found.';
             }
         }
     }
+
 
     public function update($settings) {
         if($settings->generate_shortcode === 'yes') {

@@ -13,7 +13,7 @@ class TileGallery extends FLBuilderModule {
         parent::__construct(array(
             'name'            => __( 'CERES Tile Gallery module', 'fl-builder' ),
             'description'     => __( 'Custom Tile Gallery Module', 'fl-builder' ),
-            'group'           => __( 'CERES Legacy', 'fl-builder' ),
+            'group'           => __( 'CERES v1', 'fl-builder' ),
             'category'        => __( 'CERES', 'fl-builder' ),
             'dir'             => CERES_BB_MODULES_DIR . 'CeresBbModules/ceres_tileGallery',
             'url'             => CERES_BB_MODULES_URL . 'CeresBbModules/ceres_tileGallery',

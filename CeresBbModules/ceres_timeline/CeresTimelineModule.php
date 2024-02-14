@@ -6,17 +6,17 @@ require_once __DIR__ . '/../../utility/Options.php';
 use FLBuilderModule;
 use FLBuilder;
 
-class MediaPlaylist extends FLBuilderModule {
+class TimelineModule extends FLBuilderModule {
 
     public function __construct()
     {
         parent::__construct(array(
-            'name'            => __( 'CERES Media Playlist module', 'fl-builder' ),
-            'description'     => __( 'Custom Media Playlist Module', 'fl-builder' ),
+            'name'            => __( 'CERES Timeline module', 'fl-builder' ),
+            'description'     => __( 'Custom Timeline Module', 'fl-builder' ),
             'group'           => __( 'CERES v1', 'fl-builder' ),
             'category'        => __( 'CERES', 'fl-builder' ),
-            'dir'             => CERES_BB_MODULES_DIR . 'CeresBbModules/ceres_mediaPlaylist',
-            'url'             => CERES_BB_MODULES_URL . 'CeresBbModules/ceres_mediaPlaylist',
+            'dir'             => CERES_BB_MODULES_DIR . 'CeresBbModules/ceres_timeline',
+            'url'             => CERES_BB_MODULES_URL . 'CeresBbModules/ceres_timeline',
             'icon'            => 'button.svg',
             'editor_export'   => true,
             'enabled'         => true,
@@ -27,24 +27,50 @@ class MediaPlaylist extends FLBuilderModule {
 
 }
 
-FLBuilder::register_module( 'Ceres\BeaverBuilder\Module\MediaPlaylist', array(
-    'general'      => array(
-        'title'         => __( 'General', 'fl-builder' ),
-        'sections'      => array(
-            'Settings'  => array(
-                'title'         => __( 'Settings', 'fl-builder' ),
-                'fields'        => array(
-                    'height' => array(
-                        'type'          => 'text',
-                        'label'         => __( 'Height', 'fl-builder' ),
-                        'default'       => Options::mediaPlaylistOptions()['height'],
-                        'help'          => "(Enter in pixels or %, Default is 270)"
+FLBuilder::register_module('Ceres\BeaverBuilder\Module\TimelineModule', array(
+    'general' => array(
+        'title'    => __('General', 'fl-builder'),
+        'sections' => array(
+            'section_1' => array(
+                'title'  => __('Date Boundaries', 'fl-builder'),
+                'fields' => array(
+                    'start_date_boundary' => array(
+                        'type'  => 'date',
+                        'label' => __('Start Date Boundary', 'fl-builder'),
                     ),
-                    'width' => array(
-                        'type'          => 'text',
-                        'label'         => __( 'Width', 'fl-builder' ),
-                        'default'       => Options::mediaPlaylistOptions()['width'],
-                        'help'          => "(Enter in pixels or %, Default is 100%)"
+                    'end_date_boundary'   => array(
+                        'type'  => 'date',
+                        'label' => __('End Date Boundary', 'fl-builder'),
+                    ),
+                ),
+            ),
+            'section_2' => array(
+                'title'  => __('Metadata', 'fl-builder'),
+                'fields' => array(
+                    'metadata' => array(
+                        'type'    => 'checkboxes',
+                        'label'   => __('Metadata', 'fl-builder'),
+                        'options' => array(
+                            'option_1' => __('Option 1', 'fl-builder'),
+                            'option_2' => __('Option 2', 'fl-builder'),
+                            'option_3' => __('Option 3', 'fl-builder'),
+                        ),
+                    ),
+                ),
+            ),
+            'section_3' => array(
+                'title'  => __('Scale Increments', 'fl-builder'),
+                'fields' => array(
+                    'scale_increments' => array(
+                        'type'    => 'select',
+                        'label'   => __('Scale Increments', 'fl-builder'),
+                        'default' => '1',
+                        'options' => array(
+                            '1'   => __('1', 'fl-builder'),
+                            '2'   => __('2', 'fl-builder'),
+                            '5'   => __('5', 'fl-builder'),
+                            '10'  => __('10', 'fl-builder'),
+                        ),
                     ),
                 ),
             ),
@@ -94,4 +120,4 @@ FLBuilder::register_module( 'Ceres\BeaverBuilder\Module\MediaPlaylist', array(
             )
         )
     ),
-) );
+));
