@@ -34,7 +34,6 @@ class ShortcodeConversion extends FLBuilderModule {
             if (!empty($shortcode_data)) {
                 $identifier = $shortcode_data['name'];
                 $identifier = str_replace("drstk_", "v1_", $identifier); // Corrected line
-                print_r($identifier);
                 if(!empty($identifier)) {
                     $mockedShortcodes = new CeresAdapter();
                     $mockedResponse = $mockedShortcodes->getCeresHtml($identifier,$shortcode_data['settings']);
@@ -45,7 +44,6 @@ class ShortcodeConversion extends FLBuilderModule {
             }
         }
     }
-
 
     public function update($settings) {
         if($settings->generate_shortcode === 'yes') {
