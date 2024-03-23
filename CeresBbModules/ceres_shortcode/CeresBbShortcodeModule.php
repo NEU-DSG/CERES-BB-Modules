@@ -186,242 +186,242 @@ FLBuilder::register_module('Ceres\BeaverBuilder\Module\ShortcodeConversion', arr
                         'type'          => 'text',
                         'label'         => __('Shortcode', 'fl-builder'),
                     ),
-                    'select_option' => array(
-                        'type'          => 'select',
-                        'label'         => __('Identifier', 'fl-builder'),
-                        'default'       => '',
-                        'options'       => array(
-                            ''         => __('Select an option', 'fl-builder'),
-                            'drstk_media'      => __('drstk_media', 'fl-builder'),
-                            'drstk_single' => __('drstk_single', 'fl-builder'),
-                            'drstk_slider' => __('drstk_slider', 'fl-builder'),
-                            'drstk_title' => __('drstk_title', 'fl-builder'),
-                            'drstk_map' => __('drstk_map', 'fl-builder'),
-                            'drstk_timeline' => __('drstk_timeline', 'fl-builder')
-                        ),
-                        'toggle'        => array(
-                            '' => array(),
-                            'drstk_media'  => array(
-                                'fields' => array(
-                                    'id',
-                                    'height',
-                                    'width',
-                                    'generate_shortcode')
-                            ),
-                            'drstk_single'  => array(
-                                'fields' => array(
-                                    'id',
-                                    'image_size',
-                                    'display_mode',
-                                    'display_issuu',
-                                    'image_alignment',
-                                    'caption_align',
-                                    'caption_position',
-                                    'zoom_mode',
-                                    'zoom_position',
-                                    'generate_shortcode')
-                            ),
-                            'drstk_slider'  => array(
-                                'fields' => array(
-                                    'id',
-                                    'image_upload',
-                                    'image_size',
-                                    'autorotate',
-                                    'next_prev_buttons',
-                                    'dot_pager',
-                                    'rotation_speed',
-                                    'max_height',
-                                    'generate_shortcode')
-                            ),
-                            'drstk_title'  => array(
-                                'fields' => array(
-                                    'id',
-                                    'style_type',
-                                    'text_align',
-                                    'cell_height',
-                                    'cell_width',
-                                    'photos',
-                                    'lightbox_image_size',
-                                    'generate_shortcode')
-                            ),
-                        ),
-                    ),
+//                    'select_option' => array(
+//                        'type'          => 'select',
+//                        'label'         => __('Identifier', 'fl-builder'),
+//                        'default'       => '',
+//                        'options'       => array(
+//                            ''         => __('Select an option', 'fl-builder'),
+//                            'drstk_media'      => __('drstk_media', 'fl-builder'),
+//                            'drstk_single' => __('drstk_single', 'fl-builder'),
+//                            'drstk_slider' => __('drstk_slider', 'fl-builder'),
+//                            'drstk_title' => __('drstk_title', 'fl-builder'),
+//                            'drstk_map' => __('drstk_map', 'fl-builder'),
+//                            'drstk_timeline' => __('drstk_timeline', 'fl-builder')
+//                        ),
+//                        'toggle'        => array(
+//                            '' => array(),
+//                            'drstk_media'  => array(
+//                                'fields' => array(
+//                                    'id',
+//                                    'height',
+//                                    'width',
+//                                    'generate_shortcode')
+//                            ),
+//                            'drstk_single'  => array(
+//                                'fields' => array(
+//                                    'id',
+//                                    'image_size',
+//                                    'display_mode',
+//                                    'display_issuu',
+//                                    'image_alignment',
+//                                    'caption_align',
+//                                    'caption_position',
+//                                    'zoom_mode',
+//                                    'zoom_position',
+//                                    'generate_shortcode')
+//                            ),
+//                            'drstk_slider'  => array(
+//                                'fields' => array(
+//                                    'id',
+//                                    'image_upload',
+//                                    'image_size',
+//                                    'autorotate',
+//                                    'next_prev_buttons',
+//                                    'dot_pager',
+//                                    'rotation_speed',
+//                                    'max_height',
+//                                    'generate_shortcode')
+//                            ),
+//                            'drstk_title'  => array(
+//                                'fields' => array(
+//                                    'id',
+//                                    'style_type',
+//                                    'text_align',
+//                                    'cell_height',
+//                                    'cell_width',
+//                                    'photos',
+//                                    'lightbox_image_size',
+//                                    'generate_shortcode')
+//                            ),
+//                        ),
+//                    ),
                     'id' => array(
                         'type'          => 'text',
                         'label'         => __('IDs', 'fl-builder'),
-                    ),
-                    'image_upload' => array(
-                        'type'  => 'photo',
-                        'label' => __( 'Upload Images', 'fl-builder' ),
-                        'help'  => __( 'Upload images for the gallery.', 'fl-builder' ),
-                        'multiple' => true,
-                    ),
-                    'image_size'     => array(
-                        'type'          => 'select',
-                        'default'       => "",
-                        'label'         => __( 'Image Size', 'fl-builder' ),
-                        'options'       => Options::gallerySliderOptions()['image-size'],
-                    ),
-                    'autorotate'  => array(
-                        'type'          => 'select',
-                        'label'         => __( 'Auto Rotate', 'fl-builder' ),
-                        'default'       => Options::gallerySliderOptions()['autorotate'] ? 'yes' : 'no',
-                        'options'       => array(
-                            'yes' => __( 'Yes', 'fl-builder' ),
-                            'no'  => __( 'No', 'fl-builder' ),
-                        ),
-                    ),
-                    'next_prev_buttons'  => array(
-                        'type'          => 'select',
-                        'label'         => __( 'Next/Prev Buttons', 'fl-builder' ),
-                        'default'       => Options::gallerySliderOptions()['next/prev buttons'] ? 'yes' : 'no',
-                        'options'       => array(
-                            'yes' => __( 'Yes', 'fl-builder' ),
-                            'no'  => __( 'No', 'fl-builder' ),
-                        ),
-                    ),
-                    'dot_pager'  => array(
-                        'type'          => 'select',
-                        'label'         => __( 'Dot Pager', 'fl-builder' ),
-                        'default'       => Options::gallerySliderOptions()['dot pager'] ? 'yes' : 'no',
-                        'options'       => array(
-                            'yes' => __( 'Yes', 'fl-builder' ),
-                            'no'  => __( 'No', 'fl-builder' ),
-                        ),
-                    ),
-                    'rotation_speed'  => array(
-                        'type'          => 'text',
-                        'label'         => __( 'Rotation Speed', 'fl-builder' ),
-                        'default'       => '',
-                    ),
-                    'max_height'  => array(
-                        'type'          => 'text',
-                        'label'         => __( 'Max Height', 'fl-builder' ),
-                        'default'       => '',
-                    ),
-                    'image_size'     => array(
-                        'type'          => 'select',
-                        'default'       => '',
-                        'label'         => __( 'Image Size', 'fl-builder' ),
-                        'options'       => Options::itemOptions()['image-size'],
-                    ),
-                    'display_mode'  => array(
-                        'type'          => 'select',
-                        'label'         => __( 'Display Mode', 'fl-builder' ),
-                        'default'       => '',
-                        'options'       => array(
-                            'image'     => __( 'Image Only', 'fl-builder' ),
-                            'video'     => __( 'Video Only', 'fl-builder' ),
-                            'both'      => __( 'Both Image and Video', 'fl-builder' ),
-                        ),
-                        'toggle'        => array(
-                            'both'      => array(
-                                'fields'    => array( 'display_issuu' ),
-                            ),
-                        ),
-                        'help'          => 'Note: DPLA items cannot be used as embedded media'
-                    ),
-                    'display_issuu'  => array(
-                        'type'          => 'select',
-                        'label'         => __( 'Display Issuu', 'fl-builder' ),
-                        'help'          => 'Note: Only for DRS items. Requires special metadata.',
-                        'options' => array(
-                            'yes' => __( 'true', 'fl-builder' ),
-                            'no'  => __( 'false', 'fl-builder' ),
-                        )
-                    ),
-                    'image_alignment'  => array(
-                        'type'          => 'select',
-                        'label'         => __( 'Image Alignment', 'fl-builder' ),
-                        'options'       => Options::itemOptions()['image-alignment'],
-                    ),
-                    'caption_align'  => array(
-                        'type'          => 'select',
-                        'label'         => __( 'Caption Alignment', 'fl-builder' ),
-                        'options'       =>  Options::itemOptions()['caption-align'],
-                        'help'          => 'Allow the text to float around the image by floating it to one side.'
-                    ),
-                    'caption_position'  => array(
-                        'type'          => 'select',
-                        'label'         => __( 'Caption Position', 'fl-builder' ),
-                        'options'       => array(
-                            'below' => 'Below',
-                            'hover' => 'Over Image on Hover',
-                        ),
-                    ),
-                    'zoom_mode'  => array(
-                        'type'          => 'select',
-                        'label'         => __( 'Zoom Mode', 'fl-builder' ),
-                        'default'       => 'none',
-                        'options'       => array(
-                            'none'      => __( 'None', 'fl-builder' ),
-                            'zoom-in'   => __( 'Zoom In', 'fl-builder' ),
-                            'zoom-out'  => __( 'Zoom Out', 'fl-builder' ),
-                        ),
-                        'toggle'        => array(
-                            'zoom-in'   => array(
-                                'fields'    => array( 'zoom_position' ),
-                            ),
-                            'zoom-out'  => array(
-                                'fields'    => array( 'zoom_position' ),
-                            ),
-                        ),
-                    ),
-                    'zoom_position'  => array(
-                        'type'          => 'select',
-                        'label'         => __( 'Zoom Position', 'fl-builder' ),
-                        'options'       => Options::itemOptions()['zoom-position'],
-                    ),
-                    'height' => array(
-                        'type'          => 'text',
-                        'label'         => __( 'Height', 'fl-builder' ),
-                        'default'       => '',
-                        'help'          => "(Enter in pixels or %, Default is 270)"
-                    ),
-                    'width' => array(
-                        'type'          => 'text',
-                        'label'         => __( 'Width', 'fl-builder' ),
-                        'default'       => '',
-                        'help'          => "(Enter in pixels or %, Default is 100%)"
-                    ),
-                    'style_type'  => array(
-                        'type'          => 'select',
-                        'label'         => __( 'Tile Style Type', 'fl-builder' ),
-                        'options'       => Options::tileGalleryOptions()['style-type'],
-                    ),
-                    'text_align'  => array(
-                        'type'          => 'select',
-                        'label'         => __( 'Text Alignment', 'fl-builder' ),
-                        'options'       => Options::tileGalleryOptions()['text-align'],
-                    ),
-                    'cell_height'  => array(
-                        'type'          => 'text',
-                        'label'         => __( 'Cell Height', 'fl-builder' ),
-                        'default'       => '',
-                    ),
-                    'cell_width'  => array(
-                        'type'          => 'text',
-                        'label'         => __( 'Cell Width', 'fl-builder' ),
-                        'default'       => '',
-                    ),
-                    'photos'              => array(
-                        'type'        => 'multiple-photos',
-                        'label'       => __( 'Photos', 'fl-builder' ),
-                        'connections' => array( 'multiple-photos' ),
-                    ),
-                    'lightbox_image_size' => array(
-                        'type'    => 'photo-sizes',
-                        'label'   => __( 'Lightbox Photo Size', 'fl-builder' ),
-                        'default' => '',
-                    ),
-                    'generate_shortcode' => array(
-                        'type' => 'select',
-                        'label' => __('Generate Shortcode', 'fl-builder'),
-                        'default' => 'no',
-                        'options'       => array(
-                            'yes' => __( 'yes', 'fl-builder' ),
-                            'no'  => __( 'no', 'fl-builder' ),
-                        ),
+//                    ),
+//                    'image_upload' => array(
+//                        'type'  => 'photo',
+//                        'label' => __( 'Upload Images', 'fl-builder' ),
+//                        'help'  => __( 'Upload images for the gallery.', 'fl-builder' ),
+//                        'multiple' => true,
+//                    ),
+//                    'image_size'     => array(
+//                        'type'          => 'select',
+//                        'default'       => "",
+//                        'label'         => __( 'Image Size', 'fl-builder' ),
+//                        'options'       => Options::gallerySliderOptions()['image-size'],
+//                    ),
+//                    'autorotate'  => array(
+//                        'type'          => 'select',
+//                        'label'         => __( 'Auto Rotate', 'fl-builder' ),
+//                        'default'       => Options::gallerySliderOptions()['autorotate'] ? 'yes' : 'no',
+//                        'options'       => array(
+//                            'yes' => __( 'Yes', 'fl-builder' ),
+//                            'no'  => __( 'No', 'fl-builder' ),
+//                        ),
+//                    ),
+//                    'next_prev_buttons'  => array(
+//                        'type'          => 'select',
+//                        'label'         => __( 'Next/Prev Buttons', 'fl-builder' ),
+//                        'default'       => Options::gallerySliderOptions()['next/prev buttons'] ? 'yes' : 'no',
+//                        'options'       => array(
+//                            'yes' => __( 'Yes', 'fl-builder' ),
+//                            'no'  => __( 'No', 'fl-builder' ),
+//                        ),
+//                    ),
+//                    'dot_pager'  => array(
+//                        'type'          => 'select',
+//                        'label'         => __( 'Dot Pager', 'fl-builder' ),
+//                        'default'       => Options::gallerySliderOptions()['dot pager'] ? 'yes' : 'no',
+//                        'options'       => array(
+//                            'yes' => __( 'Yes', 'fl-builder' ),
+//                            'no'  => __( 'No', 'fl-builder' ),
+//                        ),
+//                    ),
+//                    'rotation_speed'  => array(
+//                        'type'          => 'text',
+//                        'label'         => __( 'Rotation Speed', 'fl-builder' ),
+//                        'default'       => '',
+//                    ),
+//                    'max_height'  => array(
+//                        'type'          => 'text',
+//                        'label'         => __( 'Max Height', 'fl-builder' ),
+//                        'default'       => '',
+//                    ),
+//                    'image_size'     => array(
+//                        'type'          => 'select',
+//                        'default'       => '',
+//                        'label'         => __( 'Image Size', 'fl-builder' ),
+//                        'options'       => Options::itemOptions()['image-size'],
+//                    ),
+//                    'display_mode'  => array(
+//                        'type'          => 'select',
+//                        'label'         => __( 'Display Mode', 'fl-builder' ),
+//                        'default'       => '',
+//                        'options'       => array(
+//                            'image'     => __( 'Image Only', 'fl-builder' ),
+//                            'video'     => __( 'Video Only', 'fl-builder' ),
+//                            'both'      => __( 'Both Image and Video', 'fl-builder' ),
+//                        ),
+//                        'toggle'        => array(
+//                            'both'      => array(
+//                                'fields'    => array( 'display_issuu' ),
+//                            ),
+//                        ),
+//                        'help'          => 'Note: DPLA items cannot be used as embedded media'
+//                    ),
+//                    'display_issuu'  => array(
+//                        'type'          => 'select',
+//                        'label'         => __( 'Display Issuu', 'fl-builder' ),
+//                        'help'          => 'Note: Only for DRS items. Requires special metadata.',
+//                        'options' => array(
+//                            'yes' => __( 'true', 'fl-builder' ),
+//                            'no'  => __( 'false', 'fl-builder' ),
+//                        )
+//                    ),
+//                    'image_alignment'  => array(
+//                        'type'          => 'select',
+//                        'label'         => __( 'Image Alignment', 'fl-builder' ),
+//                        'options'       => Options::itemOptions()['image-alignment'],
+//                    ),
+//                    'caption_align'  => array(
+//                        'type'          => 'select',
+//                        'label'         => __( 'Caption Alignment', 'fl-builder' ),
+//                        'options'       =>  Options::itemOptions()['caption-align'],
+//                        'help'          => 'Allow the text to float around the image by floating it to one side.'
+//                    ),
+//                    'caption_position'  => array(
+//                        'type'          => 'select',
+//                        'label'         => __( 'Caption Position', 'fl-builder' ),
+//                        'options'       => array(
+//                            'below' => 'Below',
+//                            'hover' => 'Over Image on Hover',
+//                        ),
+//                    ),
+//                    'zoom_mode'  => array(
+//                        'type'          => 'select',
+//                        'label'         => __( 'Zoom Mode', 'fl-builder' ),
+//                        'default'       => 'none',
+//                        'options'       => array(
+//                            'none'      => __( 'None', 'fl-builder' ),
+//                            'zoom-in'   => __( 'Zoom In', 'fl-builder' ),
+//                            'zoom-out'  => __( 'Zoom Out', 'fl-builder' ),
+//                        ),
+//                        'toggle'        => array(
+//                            'zoom-in'   => array(
+//                                'fields'    => array( 'zoom_position' ),
+//                            ),
+//                            'zoom-out'  => array(
+//                                'fields'    => array( 'zoom_position' ),
+//                            ),
+//                        ),
+//                    ),
+//                    'zoom_position'  => array(
+//                        'type'          => 'select',
+//                        'label'         => __( 'Zoom Position', 'fl-builder' ),
+//                        'options'       => Options::itemOptions()['zoom-position'],
+//                    ),
+//                    'height' => array(
+//                        'type'          => 'text',
+//                        'label'         => __( 'Height', 'fl-builder' ),
+//                        'default'       => '',
+//                        'help'          => "(Enter in pixels or %, Default is 270)"
+//                    ),
+//                    'width' => array(
+//                        'type'          => 'text',
+//                        'label'         => __( 'Width', 'fl-builder' ),
+//                        'default'       => '',
+//                        'help'          => "(Enter in pixels or %, Default is 100%)"
+//                    ),
+//                    'style_type'  => array(
+//                        'type'          => 'select',
+//                        'label'         => __( 'Tile Style Type', 'fl-builder' ),
+//                        'options'       => Options::tileGalleryOptions()['style-type'],
+//                    ),
+//                    'text_align'  => array(
+//                        'type'          => 'select',
+//                        'label'         => __( 'Text Alignment', 'fl-builder' ),
+//                        'options'       => Options::tileGalleryOptions()['text-align'],
+//                    ),
+//                    'cell_height'  => array(
+//                        'type'          => 'text',
+//                        'label'         => __( 'Cell Height', 'fl-builder' ),
+//                        'default'       => '',
+//                    ),
+//                    'cell_width'  => array(
+//                        'type'          => 'text',
+//                        'label'         => __( 'Cell Width', 'fl-builder' ),
+//                        'default'       => '',
+//                    ),
+//                    'photos'              => array(
+//                        'type'        => 'multiple-photos',
+//                        'label'       => __( 'Photos', 'fl-builder' ),
+//                        'connections' => array( 'multiple-photos' ),
+//                    ),
+//                    'lightbox_image_size' => array(
+//                        'type'    => 'photo-sizes',
+//                        'label'   => __( 'Lightbox Photo Size', 'fl-builder' ),
+//                        'default' => '',
+//                    ),
+//                    'generate_shortcode' => array(
+//                        'type' => 'select',
+//                        'label' => __('Generate Shortcode', 'fl-builder'),
+//                        'default' => 'no',
+//                        'options'       => array(
+//                            'yes' => __( 'yes', 'fl-builder' ),
+//                            'no'  => __( 'no', 'fl-builder' ),
+//                        ),
                     ),
                 ),
             ),

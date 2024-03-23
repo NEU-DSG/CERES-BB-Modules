@@ -56,8 +56,8 @@ class ImageModule extends FLBuilderModule {
                     'caption'      => 'test image',
                     'show_caption' => $this->settings->caption_position === 'hover' ? 'hover':'below',
                     'attributes'   => array(
-                        'width'  => $this->settings->image_size,
-                        'height' => $this->settings->image_size
+                        'width'  => $this->settings->width,
+                        'height' => $this->settings->width
                     ),
                 ));
             }
@@ -165,6 +165,29 @@ FLBuilder::register_module( 'Ceres\BeaverBuilder\Module\ImageModule', array(
                             'zoom-out'  => array(
                                 'fields'    => array( 'zoom_position' ),
                             ),
+                        ),
+                    ),
+                    'width'              => array(
+                        'type'       => 'unit',
+                        'label'      => __( 'Width', 'fl-builder' ),
+                        'responsive' => true,
+                        'units'      => array(
+                            'px',
+                            'vw',
+                            '%',
+                        ),
+                        'slider'     => array(
+                            'px' => array(
+                                'min'  => 0,
+                                'max'  => 1000,
+                                'step' => 10,
+                            ),
+                        ),
+                        'preview'    => array(
+                            'type'      => 'css',
+                            'selector'  => '.fl-photo-img',
+                            'property'  => 'width',
+                            'important' => true,
                         ),
                     ),
                     'zoom_position'  => array(
