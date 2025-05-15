@@ -26,7 +26,7 @@ class ShortcodeConversion extends FLBuilderModule {
         ));
     }
 
-    public function test() {
+    public function convert() {
         $settings = $this->settings;
         $shortcode = isset($settings->shortcode) ? $settings->shortcode : '';
         if (!empty($shortcode)) {
