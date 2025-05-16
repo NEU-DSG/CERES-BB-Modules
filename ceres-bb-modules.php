@@ -19,6 +19,7 @@ define( 'CERES_ROOT_DIR', dirname(__FILE__, 2) . '/drs-toolkit-wp-plugin/librari
 require_once( CERES_BB_MODULES_DIR . 'utility/CeresAdapter.php');
 
 add_action( 'init', 'ceres_load_bb_simple' );
+add_action('init' , 'ceres_bb_testing');
 
 function ceres_load_bb_simple() {
     if ( class_exists( 'FLBuilder' ) ) {
