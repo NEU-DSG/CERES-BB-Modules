@@ -2,8 +2,7 @@
 // namespacing this into CERES, not the weak file name approach BB recommends
 namespace Ceres\BeaverBuilder\Module;
 use Ceres\BeaverBuilder\Utility\Options;
-use Ceres\BeaverBuilder\Utility\CeresAdapter;
-require_once __DIR__ . '/../../utility/CeresAdapter.php';
+
 require_once __DIR__ . '/../../utility/Options.php';
 use FLBuilderModule;
 use FLBuilder;
@@ -15,10 +14,10 @@ class ShortcodeConversion extends FLBuilderModule {
         parent::__construct(array(
             'name'            => __( 'CERES Shortcode BB module', 'fl-builder' ),
             'description'     => __( 'Just Testing', 'fl-builder' ),
-            'group'           => __( 'CERES v2', 'fl-builder' ),
+            'group'           => __( 'CERES Boosted', 'fl-builder' ),
             'category'        => __( 'CERES', 'fl-builder' ),
-            'dir'             => CERES_BB_MODULES_DIR . 'CeresBbModules/ceres_shortcode',
-            'url'             => CERES_BB_MODULES_URL . 'CeresBbModules/ceres_shortcode',
+            'dir'             => CERES_BB_MODULES_DIR . 'CeresBbModules/ceres_drs',
+            'url'             => CERES_BB_MODULES_URL . 'CeresBbModules/ceres_drs',
             'icon'            => 'button.svg',
             'editor_export'   => true,
             'enabled'         => true,
@@ -73,8 +72,8 @@ class ShortcodeConversion extends FLBuilderModule {
                 return $this->generate_drstk_single_shortcode($settings);
             case 'drstk_slider':
                 return $this->generate_drstk_slider_shortcode($settings);
-            case 'drstk_title':
-                return $this->generate_drstk_title_shortcode($settings);
+            case 'drstk_tile':
+                return $this->generate_drstk_tile_shortcode($settings);
             case 'drstk_map':
                 break;
             case 'drstk_timeline':
@@ -158,10 +157,10 @@ class ShortcodeConversion extends FLBuilderModule {
         return $shortcode;
     }
 
-    function generate_drstk_title_shortcode($settings) {
-        $shortcode = '[drstk_title';
+    function generate_drstk_tile_shortcode($settings) {
+        $shortcode = '[drstk_tile';
         $shortcode .= ' id="' . $settings->id . '"';
-        $shortcode .= ' style_type="' . $settings->style_type . '"';
+        $shortcode .= ' tile_type="' . $settings->tile_type . '"';
         $shortcode .= ' text_align="' . $settings->text_align . '"';
         $shortcode .= ' cell_height="' . $settings->cell_height . '"';
         $shortcode .= ' cell_width="' . $settings->cell_width . '"';
@@ -186,66 +185,66 @@ FLBuilder::register_module('Ceres\BeaverBuilder\Module\ShortcodeConversion', arr
                         'type'          => 'text',
                         'label'         => __('Shortcode', 'fl-builder'),
                     ),
-//                    'select_option' => array(
-//                        'type'          => 'select',
-//                        'label'         => __('Identifier', 'fl-builder'),
-//                        'default'       => '',
-//                        'options'       => array(
-//                            ''         => __('Select an option', 'fl-builder'),
-//                            'drstk_media'      => __('drstk_media', 'fl-builder'),
-//                            'drstk_single' => __('drstk_single', 'fl-builder'),
-//                            'drstk_slider' => __('drstk_slider', 'fl-builder'),
-//                            'drstk_title' => __('drstk_title', 'fl-builder'),
-//                            'drstk_map' => __('drstk_map', 'fl-builder'),
-//                            'drstk_timeline' => __('drstk_timeline', 'fl-builder')
-//                        ),
-//                        'toggle'        => array(
-//                            '' => array(),
-//                            'drstk_media'  => array(
-//                                'fields' => array(
-//                                    'id',
-//                                    'height',
-//                                    'width',
-//                                    'generate_shortcode')
-//                            ),
-//                            'drstk_single'  => array(
-//                                'fields' => array(
-//                                    'id',
-//                                    'image_size',
-//                                    'display_mode',
-//                                    'display_issuu',
-//                                    'image_alignment',
-//                                    'caption_align',
-//                                    'caption_position',
-//                                    'zoom_mode',
-//                                    'zoom_position',
-//                                    'generate_shortcode')
-//                            ),
-//                            'drstk_slider'  => array(
-//                                'fields' => array(
-//                                    'id',
-//                                    'image_upload',
-//                                    'image_size',
-//                                    'autorotate',
-//                                    'next_prev_buttons',
-//                                    'dot_pager',
-//                                    'rotation_speed',
-//                                    'max_height',
-//                                    'generate_shortcode')
-//                            ),
-//                            'drstk_title'  => array(
-//                                'fields' => array(
-//                                    'id',
-//                                    'style_type',
-//                                    'text_align',
-//                                    'cell_height',
-//                                    'cell_width',
-//                                    'photos',
-//                                    'lightbox_image_size',
-//                                    'generate_shortcode')
-//                            ),
-//                        ),
-//                    ),
+                    'select_option' => array(
+                        'type'          => 'select',
+                        'label'         => __('Identifier', 'fl-builder'),
+                        'default'       => '',
+                        'options'       => array(
+                            ''         => __('Select an option', 'fl-builder'),
+                            'drstk_media'      => __('drstk_media', 'fl-builder'),
+                            'drstk_single' => __('drstk_single', 'fl-builder'),
+                            'drstk_slider' => __('drstk_slider', 'fl-builder'),
+                            'drstk_tile' => __('drstk_tile', 'fl-builder'),
+                            'drstk_map' => __('drstk_map', 'fl-builder'),
+                            'drstk_timeline' => __('drstk_timeline', 'fl-builder')
+                        ),
+                        'toggle'        => array(
+                            '' => array(),
+                            'drstk_media'  => array(
+                                'fields' => array(
+                                    'id',
+                                    'height',
+                                    'width',
+                                    'generate_shortcode')
+                            ),
+                            'drstk_single'  => array(
+                                'fields' => array(
+                                    'id',
+                                    'image_size',
+                                    'display_mode',
+                                    'display_issuu',
+                                    'image_alignment',
+                                    'caption_align',
+                                    'caption_position',
+                                    'zoom_mode',
+                                    'zoom_position',
+                                    'generate_shortcode')
+                            ),
+                            'drstk_slider'  => array(
+                                'fields' => array(
+                                    'id',
+                                    'image_upload',
+                                    'image_size',
+                                    'autorotate',
+                                    'next_prev_buttons',
+                                    'dot_pager',
+                                    'rotation_speed',
+                                    'max_height',
+                                    'generate_shortcode')
+                            ),
+                            'drstk_tile'  => array(
+                                'fields' => array(
+                                    'id',
+                                    'tile_type',
+                                    'text_align',
+                                    'cell_height',
+                                    'cell_width',
+                                    'photos',
+                                    'lightbox_image_size',
+                                    'generate_shortcode')
+                            ),
+                        ),
+                    ),
                     'id' => array(
                         'type'          => 'text',
                         'label'         => __('IDs', 'fl-builder'),
@@ -384,7 +383,7 @@ FLBuilder::register_module('Ceres\BeaverBuilder\Module\ShortcodeConversion', arr
 //                        'default'       => '',
 //                        'help'          => "(Enter in pixels or %, Default is 100%)"
 //                    ),
-//                    'style_type'  => array(
+//                    'tile_type'  => array(
 //                        'type'          => 'select',
 //                        'label'         => __( 'Tile Style Type', 'fl-builder' ),
 //                        'options'       => Options::tileGalleryOptions()['style-type'],
@@ -427,4 +426,4 @@ FLBuilder::register_module('Ceres\BeaverBuilder\Module\ShortcodeConversion', arr
             ),
         ),
     ),
-);
+));
