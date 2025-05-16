@@ -5,6 +5,9 @@ namespace Ceres\BeaverBuilder\Module;
 use FLBuilderModule;
 use FLBuilder;
 
+
+error_reporting(E_ALL);
+
 class Simple extends FLBuilderModule {
 
     public function __construct()
