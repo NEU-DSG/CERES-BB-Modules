@@ -72,8 +72,7 @@ class CeresAdapter {
      * @param array $settings
      * @return void
      */
-    public function getCeresHtml(string $moduleType, object $settings) {
-
+    public function getCeresHtml(string $moduleType, array $settings) {
         switch ($moduleType) {
             case 'v1_single':
                 $html = $this->getV1ImageHtml($settings);

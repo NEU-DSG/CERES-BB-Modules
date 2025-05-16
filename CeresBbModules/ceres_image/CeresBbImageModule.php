@@ -45,26 +45,38 @@ class ImageModule extends FLBuilderModule {
     }
 
     private function render_image() {
-        echo FLBuilder::render_module_html('photo', array(
-            'crop'         => false,
-            'photo_url'        => 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png',
-            'photo_source'    => 'url',
-            'caption' => 'test image',
-            'show_caption' => $this->settings->caption_position === 'hover' ? 'hover':'below',
-            'attributes' => array(
-                'width'=>$this->settings->image_size,
-                'height' => $this->settings->image_size
-                ),
-        ));
+        $image_id = $this->settings->image_upload; // Retrieve single image ID
+        if (!empty($image_id)) {
+            $image_url = wp_get_attachment_url($image_id);
+            if ($image_url) {
+                echo FLBuilder::render_module_html('photo', array(
+                    'crop'         => false,
+                    'photo_url'    => $image_url,
+                    'photo_source' => 'url',
+                    'caption'      => 'test image',
+                    'show_caption' => $this->settings->caption_position === 'hover' ? 'hover':'below',
+                    'attributes'   => array(
+                        'width'  => $this->settings->width,
+                        'height' => $this->settings->width
+                    ),
+                ));
+            }
+        } else {
+            echo '<p>No image uploaded or file not found.</p>';
+        }
     }
 
+
+
+
     private function render_video() {
+        $video_embed = isset($this->settings->video_upload) ? $this->settings->video_upload : '';
+
         $video_settings = array(
-            'video_type'   => 'embed',
-            'embed_code'   => '<iframe width="560" height="315" src="https://www.youtube.com/embed/NcXsK_u4ixI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',  // replace VIDEO_ID with actual video id
+            'video_type'       => 'embed',
+            'embed_code'       => $video_embed,
             'caption_position' => $this->settings->caption_position, // Use caption position from settings
         );
-
         echo FLBuilder::render_module_html('video', $video_settings);
     }
 
@@ -96,8 +108,22 @@ FLBuilder::register_module( 'Ceres\BeaverBuilder\Module\ImageModule', array(
                             'both'      => array(
                                 'fields'    => array( 'display_issuu' ),
                             ),
+                            'image'      => array(
+                                'fields'    => array( 'image_upload' ),
+                            ),
+                            'video'      => array(
+                                'fields'    => array( 'video_upload' ),
+                            ),
                         ),
                         'help'          => 'Note: DPLA items cannot be used as embedded media'
+                    ),
+                    'image_upload' => array(
+                        'type'  => 'photo',
+                        'label' => __('Upload Image', 'fl-builder'),
+                    ),
+                    'video_upload' => array(
+                        'type'  => 'text',
+                        'label' => __('Upload Video (Embed Code)', 'fl-builder'),
                     ),
                     'display_issuu'  => array(
                         'type'          => 'checkbox',
@@ -139,6 +165,29 @@ FLBuilder::register_module( 'Ceres\BeaverBuilder\Module\ImageModule', array(
                             'zoom-out'  => array(
                                 'fields'    => array( 'zoom_position' ),
                             ),
+                        ),
+                    ),
+                    'width'              => array(
+                        'type'       => 'unit',
+                        'label'      => __( 'Width', 'fl-builder' ),
+                        'responsive' => true,
+                        'units'      => array(
+                            'px',
+                            'vw',
+                            '%',
+                        ),
+                        'slider'     => array(
+                            'px' => array(
+                                'min'  => 0,
+                                'max'  => 1000,
+                                'step' => 10,
+                            ),
+                        ),
+                        'preview'    => array(
+                            'type'      => 'css',
+                            'selector'  => '.fl-photo-img',
+                            'property'  => 'width',
+                            'important' => true,
                         ),
                     ),
                     'zoom_position'  => array(
