@@ -80,6 +80,11 @@ class ImageModule extends FLBuilderModule {
         echo FLBuilder::render_module_html('video', $video_settings);
     }
 
+    private function getImageUrls(): array {
+        $imageUrls = [];
+        
+        return $imageUrls;
+    }
 }
 
 FLBuilder::register_module( 'Ceres\BeaverBuilder\Module\ImageModule', array(

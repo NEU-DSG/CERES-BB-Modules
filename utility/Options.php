@@ -161,7 +161,6 @@ class Options {
                 "date_ssi" => false,
                 "abstract_tesim" => false,
             ],
-        ]
         ];
 
         return $tileGalleryOptions;

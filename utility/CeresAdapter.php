@@ -108,6 +108,17 @@ class CeresAdapter {
 
     /* All functions below that use file_get_contents are temporary for dev and testing */
 
+    /* convert the BB settings into atts to pass to the existing shortcodes
+        then figure out how to send them on to WP to run the old shortcodes,
+        that's probably what the anticipated shortcode parsing functions are
+        for.
+
+        
+
+        the shortcode functions return the HTML, so run those and return
+        the HTML via here
+
+    */
     protected function getV1ImageHtml(array $settings): string {
         print_r("Image module called");
         $html = file_get_contents(CERES_ROOT_DIR . '/data/rendererTemplates/drstkSingle.html');
